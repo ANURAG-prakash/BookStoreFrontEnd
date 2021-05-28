@@ -53,7 +53,7 @@ export default class RegistationPages extends React.Component<{}, RegistationPag
                             ?
 
                             <div className="Login">
-                                <div className="Change">
+                                <div className="ChangeLogin">
                                     <Button variant="contained">  Login </Button>
                                     <Button variant="contained" onClick={this.toSignUp}>  Sign Up </Button>
                                 </div>
@@ -69,15 +69,15 @@ export default class RegistationPages extends React.Component<{}, RegistationPag
 
                             <div className="SignUp">
 
-                                <div className="Change">
+                                <div className="ChangeSignup">
                                     <Button variant="contained" onClick={this.toSignIn}>  Login </Button>
                                     <Button variant="contained">  Sign Up </Button>
                                 </div>
 
-                                <div className="FullName">
+                               
                                     <Signup />
 
-                                </div>
+                                
                             </div>
                         }
                     </div>

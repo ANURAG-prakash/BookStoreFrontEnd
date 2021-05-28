@@ -10,18 +10,17 @@ background-color: #9D9D9D;
 .Dash-Body{
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: flex-end;
     top: 185px;
     left: 320px;
-    width: 624px;
+    width: 700px;
     height: 391px;
     background: #F5F5F5 0% 0% no-repeat padding-box;
     border-radius: 21px;
     opacity: 1;
 }
 #image{
-    margin-top: 45px;
-   padding: 25px;
+   padding:  40px 25px 25px 25px;
     top: 237px;
     left: 373px;
     width: 245px;
@@ -37,4 +36,22 @@ background-color: #9D9D9D;
     border: 1px solid #E4E4E4;
     border-radius: 6px;
     opacity: 1;
+}
+.ChangeSignup{
+    display: flex;
+    flex-direction: row;
+    padding: 20px 0 0 0;
+    justify-content: center;
+    align-items: center;
+    column-gap: 20px;
+
+}
+.ChangeLogin{
+    display: flex;
+    flex-direction: row;
+    padding: 20px 0 0 0;
+    justify-content: center;
+    align-items: center;
+    column-gap: 20px;
+
 }
