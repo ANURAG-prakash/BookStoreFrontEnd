@@ -16,6 +16,9 @@ class Userservice {
         console.log(`${baseUrl}User/Login`, data, false);
         return axiosservice.postMethod(`${baseUrl}User/Login`, data, false)
     }
+   
+
+    
 
 }
 
