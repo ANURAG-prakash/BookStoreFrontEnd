@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import './BookStore.css'
+import './BookStoreDashboard.css'
 
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
@@ -27,7 +27,7 @@ interface BookStoreState {
     openDropDown : boolean
 }
 
-export default class BookStore extends Component<BookStoreState> {
+export default class BookStore extends Component<{},BookStoreState> {
 
     constructor(props: any) {
         super(props);
@@ -39,45 +39,16 @@ export default class BookStore extends Component<BookStoreState> {
 
     }
 
-    componentDidMount() {
-        this.GetData();
-    }
-
-    GetData = () => {
-        axios_service.Getdata().then((result) => {
-            console.log(result.data.books);
-            this.setState({ notes: result.data.books });
-            console.log(this.state.notes);
-            console.log(this.state.notes.bookName[0]);
-        }).catch(() => {
-
-        })
-    }
-
-    addtoCart = (value : any) => {
-        console.log();
-        axios_service.AddtoCart(value).then((result) => {
-            console.log(result.data);
-            
-        }).catch(() => {
-
-        })
-    }
     
-    addtoWishList = (value : any) => {
-        axios_service.AddtoWishList(value).then((result) => {
-            console.log(result.data);
-        }).catch(() => {
 
-        })
-    }
+   
 
     toWishList = () => {
-        this.setState({ redirect: "/bookStore/wishlist" });
+        this.setState({ redirect: "/Wishlist" });
     }
 
     toCart = () => {
-        this.setState({ redirect: "/bookStore/cart" });
+        this.setState({ redirect: "/Cart" });
     }
 
     opendropdown = () => {
@@ -118,7 +89,7 @@ export default class BookStore extends Component<BookStoreState> {
                             <PersonOutlineOutlinedIcon onClick={this.closedropdown}/>
                             <form>
                             <select>
-                                <option>Hello Prashik</option>
+                                <option>Anurag Prakash</option>
                                 <option onClick = {this.toWishList}>WishList</option>
                             </select>
                             </form>
@@ -126,7 +97,7 @@ export default class BookStore extends Component<BookStoreState> {
                         :
                         <div>
                         <PersonOutlineOutlinedIcon onClick={this.opendropdown}/>
-                        <div className="Style"> Person </div>
+                        <div className="Style"> Person </div> 
                         </div>
                         }
                     </div>
@@ -159,12 +130,12 @@ export default class BookStore extends Component<BookStoreState> {
                                                 <div className= "bookbuttons">
 
                                                 <div >
-                                                <Button className = "buttonsize" onClick = {() => this.addtoCart(value.id)} size = "small" variant="contained" color="secondary">
+                                                <Button className = "buttonsize"  size = "small" variant="contained" color="secondary">
                                                 Add to Bag
                                                 </Button>
                                                 </div>
                                                 <div >
-                                                <Button className = "buttonsize" onClick = {() => this.addtoWishList(value.id)} size = "small" variant="contained">
+                                                <Button className = "buttonsize"  size = "small" variant="contained">
                                                 WishList
                                                 </Button>
                                                 </div>

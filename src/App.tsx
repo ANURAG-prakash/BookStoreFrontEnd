@@ -4,6 +4,8 @@ import Dashboard from './pages/loginSignupDashboard/loginsignupdashboard';
 import BSDashboard from './pages/BookStoreDashboard/BookStoreDashBoard';
 import Signup from '../src/components/signup/signup';
 import Login from '../src/components/login/login';
+import Wishlist from '../src/pages/WishList/WishList';
+import Cart from '../src/pages/Cart/Cart';
 
 function App() {
   return (
@@ -13,6 +15,8 @@ function App() {
       <Route exact path= "/Dashboard" component={BSDashboard} />
       <Route exact path= "/Signup" component={Signup} />
       <Route exact path= "/Login" component={Login} />
+      <Route exact path ="/Wishlist" component={Wishlist}/>
+      <Route exact path ="/Cart" component={Cart}/>
     </Switch>
   </BrowserRouter>
    
