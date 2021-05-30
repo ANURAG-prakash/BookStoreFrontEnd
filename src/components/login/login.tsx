@@ -1,17 +1,16 @@
 import React from 'react';
-import { Component } from 'react';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import './login.css';
 import Userservice from '../../services/userservices';
+import { Redirect } from "react-router-dom";
 
 
 
 
 const axios_service = new Userservice();
 
-interface IProps {
-}
+
 
 interface loginboxState {
     email: string,
@@ -36,12 +35,16 @@ export default class loginbox extends React.Component<{}, loginboxState> {
         }
     }
    
+    
+    handleClose = () => {
+        this.setState({ open: false });
+      };
 
       validation = () =>{
         let isError : boolean = false;
-        const errors : any = this.state;
-        errors.emailerror = this.state.email === '' ? true : false;
-        errors.passworderror = this.state.password === '' ? true : false;
+        const errors :any = this.state;
+        errors.emailerror= this.state.email === '' ? true : false;
+        errors.passworderror= this.state.password === '' ? true : false;
         this.setState({
             ...errors,
             // ...this.state
@@ -52,56 +55,77 @@ export default class loginbox extends React.Component<{}, loginboxState> {
     Next = () => {
 
         var isValidated = this.validation();
-        console.log(this.state.email);
-        console.log(this.state.password);
     
         if (isValidated) {
-          this.setState({ open: true });
+          
           let data = {
             "email": this.state.email,
             "password": this.state.password
           };
     
-          console.log("validation successful");
+          console.log("Login Is done");
           axios_service.Login(data).then((result) => {
             console.log(result);
             this.setState({ open: true });
             localStorage.setItem('id',result.data.token);
-            setTimeout(() => this.setState({ redirect: "/bookStore" }), 4000)
-    
-          }).catch(() => {
+            this.setState({ redirect: "/Dashboard" })
     
           })
     
         }
+        if(!isValidated)
+          {
+            alert("validation unsuccessful");
+        }
     }
 
 
+    change = (e : any) => {
+
+        console.log(e.target.value);
+        this.setState({ email: e.target.value });
+    }
+    
+    handleChange = (e : any) => {
+    
+        console.log(e.target.value);
+        this.setState({ password: e.target.value });
+    }
+
     render() {
+        if (this.state.redirect) {
+
+            return <Redirect to={this.state.redirect} />
+        }
+      
         return (
             <div className="inner-container">
                 <div className="box">
                     <div className="Inner-content">
                         <div className="input-group">
                             <TextField
-
+                                 error = {this.state.emailerror}
                                 label="Email"
                                 name="email"
-                                type="Email"
+                                type="email"
                                 variant="outlined"
                                 size="small"
                                 fullWidth
+                                onChange={e => this.change(e)}
+                                helperText={this.state.emailerror ? "Enter Email" : ''}
                             />
                         </div>
                         <div className="input-group">
                             <TextField
-
+                                error = {this.state.passworderror}
                                 label="Password"
                                 name="password"
                                 type="password"
                                 variant="outlined"
                                 size="small"
                                 fullWidth
+                                onChange={e => this.handleChange(e)}
+                                helperText={this.state.passworderror ? "Enter password" : ''} 
                             />
                         </div>
 
@@ -109,10 +133,10 @@ export default class loginbox extends React.Component<{}, loginboxState> {
                             <Button variant="contained" color="secondary" onClick={this.Next} >  Log IN </Button>
                         </div>
 
-                        <div className="Or-Tag">
+                        {/* <div className="Or-Tag"> */}
 
                             <strong>----------OR----------</strong>
-                        </div>
+                        {/* </div> */}
 
                         <div className="Login-Type">
 

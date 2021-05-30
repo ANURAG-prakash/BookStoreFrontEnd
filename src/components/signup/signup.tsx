@@ -1,5 +1,4 @@
 import React from 'react';
-import { Component} from 'react';
 import TextField from '@material-ui/core/TextField';
 import './signup.css';
 import Button from '@material-ui/core/Button';
@@ -59,7 +58,7 @@ export  default class signupbox extends React.Component{
                          />
                      </div>
 
-                     <div className= "Button">
+                     <div className= "ButtonSignup">
                             <Button variant="contained" color="secondary" fullWidth>  SignUp </Button>
                         </div>
                      </div>

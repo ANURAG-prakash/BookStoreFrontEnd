@@ -1,8 +1,8 @@
 import React from 'react';
-import Loginbox from '../components/login/login';
-import Signup from '../components/signup/signup';
+import Loginbox from '../../components/login/login';
+import Signup from '../../components/signup/signup';
 import { Redirect } from "react-router-dom";
-import logo from '../assert/cmp.png';
+import logo from '../../assert/cmp.png';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import './loginSignup.css';
