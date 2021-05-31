@@ -12,6 +12,7 @@ interface IProps {
 
 interface RegistationPagesState {
     openbox: boolean,
+    redirect:any
 }
 
 export default class RegistationPages extends React.Component<{}, RegistationPagesState> {
@@ -19,6 +20,7 @@ export default class RegistationPages extends React.Component<{}, RegistationPag
         super(props)
         this.state = {
             openbox: true,
+            redirect:null
         }
     }
     componentDidMount() {
@@ -28,10 +30,12 @@ export default class RegistationPages extends React.Component<{}, RegistationPag
 
     toSignUp = (e: any) => {
         this.setState({ openbox: false });
+        this.setState({ redirect: "/Login" });
     }
 
     toSignIn = (e: any) => {
         this.setState({ openbox: true });
+        this.setState({ redirect: "/Signup" });
     }
 
     render() {
@@ -42,7 +46,7 @@ export default class RegistationPages extends React.Component<{}, RegistationPag
                 <div className="Dash-Body">
                     <div className="Dash-Image">
 
-                        <img id="image" src={logo} alt="BookStore" />
+                        <img id="image1" src={logo} alt="BookStore" />
                         <div className="belowImage"><strong>ONLINE BOOK SHOPPING</strong></div>
                     </div>
 
