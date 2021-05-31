@@ -115,60 +115,78 @@ export default class BookStore extends Component<{}, BookStoreState> {
                         <div className="Book-dashboard-row1">
                             <div className="book">
                                 <div className="Image-bg">
-                                <img id="image" src={book1} alt="BookStore" />
+                                    <img id="image" src={book1} alt="BookStore" />
                                 </div>
                                 <div className="belowImage"><strong>ONLINE BOOK SHOPPING</strong></div>
                             </div>
                             <div className="book">
-                            <div className="Image-bg">
-                                <img id="image" src={book2} alt="BookStore" />
+                                <div className="Image-bg">
+                                    <img id="image" src={book2} alt="BookStore" />
                                 </div>
                                 <div className="belowImage"><strong>ONLINE BOOK SHOPPING</strong></div>
                             </div>
                             <div className="book">
-                            <div className="Image-bg">
-                                <img id="image" src={book3} alt="BookStore" />
+                                <div className="Image-bg">
+                                    <img id="image" src={book3} alt="BookStore" />
                                 </div>
                                 <div className="belowImage"><strong>ONLINE BOOK SHOPPING</strong></div>
                             </div>
                             <div className="book">
-                                <img id="image" src={book4} alt="BookStore" />
+                                <div className="Image-bg">
+                                    <img id="image" src={book4} alt="BookStore" />
+                                </div>
                                 <div className="belowImage"><strong>ONLINE BOOK SHOPPING</strong></div>
                             </div>
                         </div>
                         <div className="Book-dashboard-row1">
                             <div className="book">
-                                <img id="image" src={book4} alt="BookStore" />
+                                <div className="Image-bg">
+                                    <img id="image" src={book4} alt="BookStore" />
+                                </div>
                                 <div className="belowImage"><strong>ONLINE BOOK SHOPPING</strong></div>
                             </div>
                             <div className="book">
-                                <img id="image" src={book3} alt="BookStore" />
+                                <div className="Image-bg">
+                                    <img id="image" src={book3} alt="BookStore" />
+                                </div>
                                 <div className="belowImage"><strong>ONLINE BOOK SHOPPING</strong></div>
                             </div>
                             <div className="book">
-                                <img id="image" src={book2} alt="BookStore" />
+                                <div className="Image-bg">
+                                    <img id="image" src={book2} alt="BookStore" />
+                                </div>
                                 <div className="belowImage"><strong>ONLINE BOOK SHOPPING</strong></div>
                             </div>
                             <div className="book">
-                                <img id="image" src={book1} alt="BookStore" />
+                                <div className="Image-bg">
+                                    <img id="image" src={book1} alt="BookStore" />
+                                </div>
                                 <div className="belowImage"><strong>ONLINE BOOK SHOPPING</strong></div>
                             </div>
                         </div>
                         <div className="Book-dashboard-row1">
                             <div className="book">
-                                <img id="image" src={book1} alt="BookStore" />
+                                <div className="Image-bg">
+                                    <img id="image" src={book1} alt="BookStore" />
+                                </div>
                                 <div className="belowImage"><strong>ONLINE BOOK SHOPPING</strong></div>
                             </div>
                             <div className="book">
-                                <img id="image" src={book2} alt="BookStore" />
+                                <div className="Image-bg">
+                                    <img id="image" src={book2} alt="BookStore" />
+                                </div>
                                 <div className="belowImage"><strong>ONLINE BOOK SHOPPING</strong></div>
                             </div>
                             <div className="book">
-                                <img id="image" src={book3} alt="BookStore" />
+                                <div className="Image-bg">
+                                    <img id="image" src={book3} alt="BookStore" />
+                                </div>
                                 <div className="belowImage"><strong>ONLINE BOOK SHOPPING</strong></div>
                             </div>
                             <div className="book">
-                                <img id="image" src={book4} alt="BookStore" />
+                                <div className="Image-bg">
+                                    <img id="image" src={book4} alt="BookStore" />
+                                </div>
                                 <div className="belowImage"><strong>ONLINE BOOK SHOPPING</strong></div>
                             </div>
                         </div>
