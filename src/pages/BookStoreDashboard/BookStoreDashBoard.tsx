@@ -71,95 +71,10 @@ export default class BookStore extends Component<{}, BookStoreState> {
 
                 <div className="Body">
                     <div className="Title">Books</div>
-                    <div className="Book-body">
-                        <div className="Book-dashboard-row1">
-                            <div className="book">
-                                <div className="Image-bg">
-                                    <img id="image" src={book1} alt="BookStore" />
-                                </div>
-                                <div className="belowImage">
-                                <strong>ONLINE BOOK SHOPPING</strong>
-                                </div>
-                            </div>
-                            <div className="book">
-                                <div className="Image-bg">
-                                    <img id="image" src={book2} alt="BookStore" />
-                                </div>
-                                <div className="belowImage"><strong>ONLINE BOOK SHOPPING</strong></div>
-                            </div>
-                            <div className="book">
-                                <div className="Image-bg">
-                                    <img id="image" src={book3} alt="BookStore" />
-                                </div>
-                                <div className="belowImage"><strong>ONLINE BOOK SHOPPING</strong></div>
-                            </div>
-                            <div className="book">
-                                <div className="Image-bg">
-                                    <img id="image" src={book4} alt="BookStore" />
-                                </div>
-                                <div className="belowImage"><strong>ONLINE BOOK SHOPPING</strong></div>
-                            </div>
-                        </div>
-                        <div className="Book-dashboard-row1">
-                            <div className="book">
-                                <div className="Image-bg">
-                                    <img id="image" src={book4} alt="BookStore" />
-                                </div>
-                                <div className="belowImage"><strong>ONLINE BOOK SHOPPING</strong></div>
-                            </div>
-                            <div className="book">
-                                <div className="Image-bg">
-                                    <img id="image" src={book3} alt="BookStore" />
-                                </div>
-                                <div className="belowImage"><strong>ONLINE BOOK SHOPPING</strong></div>
-                            </div>
-                            <div className="book">
-                                <div className="Image-bg">
-                                    <img id="image" src={book2} alt="BookStore" />
-                                </div>
-                                <div className="belowImage"><strong>ONLINE BOOK SHOPPING</strong></div>
-                            </div>
-                            <div className="book">
-                                <div className="Image-bg">
-                                    <img id="image" src={book1} alt="BookStore" />
-                                </div>
-                                <div className="belowImage"><strong>ONLINE BOOK SHOPPING</strong></div>
-                            </div>
-                        </div>
-                        <div className="Book-dashboard-row1">
-                            <div className="book">
-                                <div className="Image-bg">
-                                    <img id="image" src={book1} alt="BookStore" />
-                                </div>
-                                <div className="belowImage"><strong>ONLINE BOOK SHOPPING</strong></div>
-                            </div>
-                            <div className="book">
-                                <div className="Image-bg">
-                                    <img id="image" src={book2} alt="BookStore" />
-                                </div>
-                                <div className="belowImage"><strong>ONLINE BOOK SHOPPING</strong></div>
-                            </div>
-                            <div className="book">
-                                <div className="Image-bg">
-                                    <img id="image" src={book3} alt="BookStore" />
-                                </div>
-                                <div className="belowImage"><strong>ONLINE BOOK SHOPPING</strong></div>
-                            </div>
-                            <div className="book">
-                                <div className="Image-bg">
-                                    <img id="image" src={book4} alt="BookStore" />
-                                </div>
-                                <div className="belowImage"><strong>ONLINE BOOK SHOPPING</strong></div>
-                            </div>
-                        </div>
-                    </div>
+                   
                 </div>
 
-                <footer>
-                    <div className="text">
-                        Copyright 2020, BookStore Private Limited.All Rights Reserved
-                    </div>
-                </footer>
+                
             </div>
         )
     }
