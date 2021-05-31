@@ -16,6 +16,9 @@ import { Redirect } from "react-router-dom";
 import Userservice from '../../services/userservices';
 
 import book1 from '../../assert/book1.png';
+import book2 from '../../assert/book2.png';
+import book3 from '../../assert/book3.png';
+import book4 from '../../assert/book4.png';
 
 const axios_service = new Userservice();
 
@@ -24,10 +27,10 @@ const axios_service = new Userservice();
 interface BookStoreState {
     notes: any,
     redirect: any,
-    openDropDown : boolean
+    openDropDown: boolean
 }
 
-export default class BookStore extends Component<{},BookStoreState> {
+export default class BookStore extends Component<{}, BookStoreState> {
 
     constructor(props: any) {
         super(props);
@@ -39,9 +42,9 @@ export default class BookStore extends Component<{},BookStoreState> {
 
     }
 
-    
 
-   
+
+
 
     toWishList = () => {
         this.setState({ redirect: "/Wishlist" });
@@ -52,11 +55,11 @@ export default class BookStore extends Component<{},BookStoreState> {
     }
 
     opendropdown = () => {
-        this.setState({ openDropDown : true });
+        this.setState({ openDropDown: true });
     }
 
     closedropdown = () => {
-        this.setState({ openDropDown : false });
+        this.setState({ openDropDown: false });
     }
 
     render() {
@@ -68,7 +71,7 @@ export default class BookStore extends Component<{},BookStoreState> {
 
         return (
 
-            <div>
+            <div className="Full-Body">
                 <header>
 
                     <MenuBookSharpIcon className="MenuBookSharpIcon" />
@@ -84,76 +87,92 @@ export default class BookStore extends Component<{},BookStoreState> {
                     </div>
 
                     <div className="PersonOutlineOutlinedIcon">
-                        {this.state.openDropDown ? 
-                        <div className = "dropdown">
-                            <PersonOutlineOutlinedIcon onClick={this.closedropdown}/>
-                            <form>
-                            <select>
-                                <option>Anurag Prakash</option>
-                                <option onClick = {this.toWishList}>WishList</option>
-                            </select>
-                            </form>
-                        </div>
-                        :
-                        <div>
-                        <PersonOutlineOutlinedIcon onClick={this.opendropdown}/>
-                        <div className="Style"> Person </div> 
-                        </div>
+                        {this.state.openDropDown ?
+                            <div className="dropdown">
+                                <PersonOutlineOutlinedIcon onClick={this.closedropdown} />
+                                <form>
+                                    <select>
+                                        <option>Anurag Prakash</option>
+                                        <option onClick={this.toWishList}>WishList</option>
+                                    </select>
+                                </form>
+                            </div>
+                            :
+                            <div>
+                                <PersonOutlineOutlinedIcon onClick={this.opendropdown} />
+                                <div className="Style"> Person </div>
+                            </div>
                         }
                     </div>
                     <div className="ShoppingCartIcon"><ShoppingCartIcon onClick={this.toCart} /> <div className="Style">Cart</div></div>
 
                 </header>
+
+
                 <div className="Body">
                     <div className="Title">Books</div>
-
-
-                    <Grid item xs={12}>
-                        <Grid container justify="flex-start">
-                            {this.state.notes.slice(0).reverse().map((value: any) =>
-
-                                <Grid key={value.id} item >
-
-                                    <Paper className="paper">
-
-                                        <div>
-                                            <div className="img">
-                                                <img id = "image2" src={book1} alt="Book" />
-                                            </div>
-
-                                            <div className="Intro">
-
-                                                <div className="bookName">{value.bookName} </div>
-                                                <div className="by">by {value.authors}</div>
-                                                <div className="rating">4.5 <div className="number">({value.availableBooks})</div></div>
-                                                <div className="price">Rs.{value.price}</div>
-                                                <div className= "bookbuttons">
-
-                                                <div >
-                                                <Button className = "buttonsize"  size = "small" variant="contained" color="secondary">
-                                                Add to Bag
-                                                </Button>
-                                                </div>
-                                                <div >
-                                                <Button className = "buttonsize"  size = "small" variant="contained">
-                                                WishList
-                                                </Button>
-                                                </div>
-
-                                                </div>
-                                            </div>
-
-                                        </div>
-
-                                    </Paper>
-
-                                </Grid>
-
-                            )}
-                        </Grid>
-                    </Grid>
-
-
+                    <div className="Book-body">
+                        <div className="Book-dashboard-row1">
+                            <div className="book">
+                                <div className="Image-bg">
+                                <img id="image" src={book1} alt="BookStore" />
+                                </div>
+                                <div className="belowImage"><strong>ONLINE BOOK SHOPPING</strong></div>
+                            </div>
+                            <div className="book">
+                            <div className="Image-bg">
+                                <img id="image" src={book2} alt="BookStore" />
+                                </div>
+                                <div className="belowImage"><strong>ONLINE BOOK SHOPPING</strong></div>
+                            </div>
+                            <div className="book">
+                            <div className="Image-bg">
+                                <img id="image" src={book3} alt="BookStore" />
+                                </div>
+                                <div className="belowImage"><strong>ONLINE BOOK SHOPPING</strong></div>
+                            </div>
+                            <div className="book">
+                                <img id="image" src={book4} alt="BookStore" />
+                                <div className="belowImage"><strong>ONLINE BOOK SHOPPING</strong></div>
+                            </div>
+                        </div>
+                        <div className="Book-dashboard-row1">
+                            <div className="book">
+                                <img id="image" src={book4} alt="BookStore" />
+                                <div className="belowImage"><strong>ONLINE BOOK SHOPPING</strong></div>
+                            </div>
+                            <div className="book">
+                                <img id="image" src={book3} alt="BookStore" />
+                                <div className="belowImage"><strong>ONLINE BOOK SHOPPING</strong></div>
+                            </div>
+                            <div className="book">
+                                <img id="image" src={book2} alt="BookStore" />
+                                <div className="belowImage"><strong>ONLINE BOOK SHOPPING</strong></div>
+                            </div>
+                            <div className="book">
+                                <img id="image" src={book1} alt="BookStore" />
+                                <div className="belowImage"><strong>ONLINE BOOK SHOPPING</strong></div>
+                            </div>
+                        </div>
+                        <div className="Book-dashboard-row1">
+                            <div className="book">
+                                <img id="image" src={book1} alt="BookStore" />
+                                <div className="belowImage"><strong>ONLINE BOOK SHOPPING</strong></div>
+                            </div>
+                            <div className="book">
+                                <img id="image" src={book2} alt="BookStore" />
+                                <div className="belowImage"><strong>ONLINE BOOK SHOPPING</strong></div>
+                            </div>
+                            <div className="book">
+                                <img id="image" src={book3} alt="BookStore" />
+                                <div className="belowImage"><strong>ONLINE BOOK SHOPPING</strong></div>
+                            </div>
+                            <div className="book">
+                                <img id="image" src={book4} alt="BookStore" />
+                                <div className="belowImage"><strong>ONLINE BOOK SHOPPING</strong></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <footer>
