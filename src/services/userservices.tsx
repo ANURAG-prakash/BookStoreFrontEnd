@@ -18,8 +18,8 @@ class Userservice {
     }
 
     Getdata = () => {
-        console.log(`${baseUrl}Books`, configbook);
-        return axiosservice.getMethod(`${baseUrl}Books`, configbook)
+        console.log(`${baseUrl}User`, configbook);
+        return axiosservice.getMethod(`${baseUrl}User`, configbook)
     }
    
     Getcart = () => {

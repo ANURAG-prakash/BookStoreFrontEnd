@@ -11,6 +11,8 @@ import book2 from '../../assert/book2.png';
 import book3 from '../../assert/book3.png';
 import book4 from '../../assert/book4.png';
 import Header from '../../components/header/header';
+import Footer from '../../components/footer/footer';
+import Books from '../../components/bookComponents/bookscomponent';
 
 const axios_service = new Userservice();
 
@@ -64,17 +66,17 @@ export default class BookStore extends Component<{}, BookStoreState> {
         return (
 
             <div className="Full-Body">
-               
-                  <Header/>
-               
+
+                <Header />
+
 
 
                 <div className="Body">
                     <div className="Title">Books</div>
-                   
+                       <Books/>
                 </div>
 
-                
+                <Footer />
             </div>
         )
     }
