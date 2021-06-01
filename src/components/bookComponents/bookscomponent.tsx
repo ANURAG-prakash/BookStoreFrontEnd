@@ -12,11 +12,11 @@ import Userservice from '../../services/userservices';
 const axios_service = new Userservice();
 
 interface BookComponentState {
-   
-    notes: any,
+
+    notes?: any,
     redirect: any,
-    openDropDown : boolean
-   
+    openDropDown: boolean
+
 }
 
 export default class BookComponent extends Component<{}, BookComponentState> {
@@ -24,11 +24,11 @@ export default class BookComponent extends Component<{}, BookComponentState> {
     constructor(props: any) {
         super(props);
         this.state = {
-            
+
             redirect: null,
-            notes:[],
-            openDropDown:false
-           
+            notes: [],
+            openDropDown: false
+
         }
 
     }
@@ -46,19 +46,13 @@ export default class BookComponent extends Component<{}, BookComponentState> {
         })
     }
 
-    addtoCart = (value : any) => {
+
+
+    addtoCart = (value: any) => {
         console.log();
         axios_service.AddtoCart(value).then((result) => {
             console.log(result.data);
-            
-        }).catch(() => {
 
-        })
-    }
-    
-    addtoWishList = (value : any) => {
-        axios_service.AddtoWishList(value).then((result) => {
-            console.log(result.data);
         }).catch(() => {
 
         })
@@ -67,50 +61,52 @@ export default class BookComponent extends Component<{}, BookComponentState> {
 
     render() {
         return (
-            <Grid item xs={12}>
-            <Grid container justify="flex-start">
-                {this.state.notes.slice(0).reverse().map((value: any) =>
+            <Grid item xs={8}>
+                <Grid container justify="flex-start">
+                    {this.state.notes.slice(0).reverse().map((value: any) =>
 
-                    <Grid key={value.id} item >
+                        <Grid key={value.id} item >
 
-                        <Paper className="paper">
+                            <Paper className="paper">
 
-                            <div>
-                                <div className="img">
-                                    <img id = "image2" src={book1} alt="Book" />
+                                <div>
+                                    <div className="img">
+                                        <img id="image2" src={book1} alt="Book" />
+                                    </div>
+
+                                    <div className="Intro">
+
+                                        <div className="bookName">{value.bookName} </div>
+                                        <div className="by">by {value.authors}</div>
+                                        <div className="rating">4.5 <div className="number">({value.availableBooks})</div></div>
+                                        <div className="price">Rs.{value.price}</div>
+                                        <div className="bookbuttons">
+
+                                            <div >
+                                                <Button className="buttonsize" onClick={() => this.addtoCart(value.id)} size="small" variant="contained" color="secondary">
+                                                    Add to Bag
+                                     </Button>
+                                            </div>
+                                            <div >
+                                                <Button className="buttonsize" size="small" variant="contained">
+                                                    WishList
+                                      </Button>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
                                 </div>
 
-                                <div className="Intro">
+                            </Paper>
 
-                                    <div className="bookName">{value.bookName} </div>
-                                    <div className="by">by {value.authors}</div>
-                                    <div className="rating">4.5 <div className="number">({value.availableBooks})</div></div>
-                                    <div className="price">Rs.{value.price}</div>
-                                    <div className= "bookbuttons">
+                        </Grid>
 
-                                    <div >
-                                    <Button className = "buttonsize" onClick = {() => this.addtoCart(value.id)} size = "small" variant="contained" color="secondary">
-                                    Add to Bag
-                                    </Button>
-                                    </div>
-                                    <div >
-                                    <Button className = "buttonsize" onClick = {() => this.addtoWishList(value.id)} size = "small" variant="contained">
-                                    WishList
-                                    </Button>
-                                    </div>
-
-                                    </div>
-                                </div>
-
-                            </div>
-
-                        </Paper>
-
-                    </Grid>
-
-                )}
+                    )}
+                </Grid>
             </Grid>
-        </Grid>
+
         )
     }
 }
+
