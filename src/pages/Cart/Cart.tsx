@@ -1,16 +1,6 @@
 import React, { Component } from 'react'
 
 import './Cart.css';
-
-import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
-import InputBase from '@material-ui/core/InputBase';
-import SearchIcon from '@material-ui/icons/Search';
-import MenuBookSharpIcon from '@material-ui/icons/MenuBookSharp';
-import PersonOutlineOutlinedIcon from '@material-ui/icons/PersonOutlineOutlined';
-import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
-import DeleteIcon from '@material-ui/icons/Delete';
-import DeleteOutlineOutlinedIcon from '@material-ui/icons/DeleteOutlineOutlined';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Checkbox from '@material-ui/core/Checkbox';
