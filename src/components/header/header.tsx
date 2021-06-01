@@ -1,39 +1,30 @@
 import React, { Component } from 'react'
-import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
 import InputBase from '@material-ui/core/InputBase';
 import SearchIcon from '@material-ui/icons/Search';
 import MenuBookSharpIcon from '@material-ui/icons/MenuBookSharp';
 import PersonOutlineOutlinedIcon from '@material-ui/icons/PersonOutlineOutlined';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
-import Button from '@material-ui/core/Button';
-import Wishlistcart from '../../components/bookComponents/bookscomponent';
-import '../../pages/BookStoreDashboard/BookStoreDashboard.css'
-import { Redirect } from "react-router-dom";
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
+import { Redirect } from "react-router-dom";
+import Userservice from '../../services/userservices';
 
-interface BookStoreState {
-    notes: any,
-    redirect: any,
-    openDropDown: boolean
+interface HeaderState {
+    
+    redirect?: any,
+    openDropDown?: boolean
 }
 
-export default class BookStore extends Component<{}, BookStoreState> {
-
+export default class Header extends Component<{}, HeaderState> {
     constructor(props: any) {
         super(props);
         this.state = {
-            notes: [],
+            
             redirect: null,
             openDropDown: false
         }
 
     }
-
-
-
-
 
     toWishList = () => {
         this.setState({ redirect: "/Wishlist" });
@@ -52,10 +43,12 @@ export default class BookStore extends Component<{}, BookStoreState> {
     }
 
     render() {
+
         if (this.state.redirect) {
 
             return <Redirect to={this.state.redirect} />
         }
+
         return (
             <div>
                 <header>
@@ -75,19 +68,19 @@ export default class BookStore extends Component<{}, BookStoreState> {
                     <div className="PersonOutlineOutlinedIcon">
                         {this.state.openDropDown ?
                             <div className="dropdown">
-                                <div className="x"><PersonOutlineOutlinedIcon onClick={this.closedropdown} /></div>
+                                <div className= "x"><PersonOutlineOutlinedIcon onClick={this.closedropdown} /></div>
                                 <div className="y">
-                                    <Menu
-                                        id="simple-menu"
-                                        keepMounted
-                                        open={this.state.openDropDown}
-                                        onClose={this.closedropdown}
+                                <Menu
+                                    id="simple-menu"
+                                    keepMounted
+                                    open={this.state.openDropDown}
+                                    onClose={this.closedropdown}
                                     >
-                                        <MenuItem onClick={this.closedropdown}>Hello User!!</MenuItem>
-                                        <MenuItem onClick={this.toWishList}>My WishList</MenuItem>
-                                        <MenuItem onClick={this.closedropdown}>Logout</MenuItem>
+                                    <MenuItem onClick={this.closedropdown}>Anurag</MenuItem>
+                                    <MenuItem onClick={this.toWishList}>My WishList</MenuItem>
+                                    <MenuItem onClick={this.closedropdown}>Logout</MenuItem>
 
-                                    </Menu>
+                                </Menu>
                                 </div>
                             </div>
                             :

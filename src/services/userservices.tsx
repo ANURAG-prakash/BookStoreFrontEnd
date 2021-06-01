@@ -12,31 +12,32 @@ const configbook = {
 
 class Userservice {
 
+    
+
     Login = (data : any) => {
-        console.log(`${baseUrl}User/Login`, data, false);
-        return axiosservice.postMethod(`${baseUrl}User/Login`, data, false)
+        console.log(`${baseUrl}User/Login`, data, configbook);
+        return axiosservice.postMethod(`${baseUrl}User/Login`, data, configbook)
     }
 
     Getdata = () => {
-        console.log(`${baseUrl}User`, configbook);
-        return axiosservice.getMethod(`${baseUrl}User`, configbook)
+        console.log(`${baseUrl}Books`, configbook);
+        return axiosservice.getMethod(`${baseUrl}Books`, configbook)
     }
-   
+
     Getcart = () => {
         console.log(`${baseUrl}Cart`, configbook);
         return axiosservice.getMethod(`${baseUrl}Cart`, configbook)
+    }
+
+    Getwishlist = () => {
+        console.log(`${baseUrl}WishList`, configbook);
+        return axiosservice.getMethod(`${baseUrl}WishList`, configbook)
     }
 
     AddtoCart = (id : any) => {
         console.log(`${baseUrl}User/${id}/MoveToCart`, id, configbook);
         return axiosservice.putMethod(`${baseUrl}User/${id}/MoveToCart`, id, configbook)
     }
-
-    AddtoWishList = (id : any) => {
-        console.log(`${baseUrl}User/${id}/MoveToWishList`, id, configbook);
-        return axiosservice.putMethod(`${baseUrl}User/${id}/MoveToWishList`, id, configbook)
-    }
-    
 
 }
 

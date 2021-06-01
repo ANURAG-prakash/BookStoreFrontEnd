@@ -1,3 +1,33 @@
+.Cartbody{
+    top: 0px;
+left: 0px;
+min-height: 1216px;
+background: #FFFFFF 0% 0% no-repeat padding-box;
+opacity: 1;
+margin-left: 174px;
+display: flex;
+flex-direction: column;
+}
+
+header{
+    padding: 10px 0 10px 0;
+}
+.MyCart{
+    padding-top: 10px ;
+    padding-bottom: 20px;
+    padding-left: 150px;
+    font-size: 30px;
+}
+.Cart{
+    width: 750px;
+    padding: 15px;
+    border: 1px solid #cfcfcf;
+    
+}
+.CartPaper{
+    padding-left: 40px;
+}
+
 .row{
     display: flex;
 }
@@ -16,11 +46,7 @@ input{
     font: normal normal normal 14px/19px Roboto;
 }
 
-.Cart{
-    width: 750px;
-    padding: 15px;
-    border: 1px solid #cfcfcf;
-}
+
 
 .heading{
     font-size: 20px;
@@ -36,9 +62,14 @@ input{
     display: flex;
 }
 
+.cartitems2{
+    display: flex;
+    flex-direction: column;
+}
+
+
 .PlaceOrder{
-    margin-top: auto;
-    margin-left: auto;
+   padding: 20px 20px 20px 220px;
 }
 
 #quantity{
@@ -54,7 +85,6 @@ input{
 
 .openDetails{
     width: 730px;
-    height: 300px;
     padding: 25px;
     border: 1px solid #cfcfcf;
     display: flex;
@@ -62,45 +92,74 @@ input{
 }
 
 
-.Body2{
-    top: 0px;
-left: 0px;
-min-height: 1216px;
-background: #FFFFFF 0% 0% no-repeat padding-box;
-opacity: 1;
-margin-left: 174px;
-display: flex;
-flex-direction: column;
-}
+
 
 .takeinput{
     display: flex;
     flex-direction: column;
+    align-items: self-start;
+    
 }
 
 .giveinput{
     display: flex;
     justify-content: space-around;
-    margin-right: 132px;
+    padding: 20px 20px 10px 30px;
+    
 }
 
-.a{
+.InputFields{
+    width: 300px;
     height: 50px;
+}
+.InputField{
+    width: 300px;
+    height: 50px;
+    padding-left: 70px;
 }
 
 
 
 .left{
-    margin-left: 50px;
+    width: 100%;
+    padding: 0 0 20px 40px;
     display: flex;
     flex-direction: row;
 }
 
-.b{
-    margin-left: 30px;
-    padding: 10px;
+.AddressBar{
+    
+    Width:520px ;
+    padding: 10px 30px 20px 30px;
 }
 
 .Place{
     margin-left: 500px;
+}
+.MuiButton-label {
+    width: 100%;
+    display: inherit;
+    align-items: inherit;
+    justify-content: inherit;
+    font-family: monospace;
+}
+.image3{
+    padding: 10px 20px 10px 50px;
+    width: 109px;
+    height: 135px;
+    background: transparent 0% 0% no-repeat padding-box;
+    opacity: 1;
+
+}
+
+.giveinputnew{
+    display: flex;
+    justify-content: space-around;
+    padding: 20px 20px 10px 30px;
+
+}
+
+.cartitems {
+    display: flex;
+    align-items: flex-end;
 }

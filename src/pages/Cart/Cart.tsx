@@ -112,23 +112,21 @@ export default class Cart extends Component<{}, CartState> {
 
             <div>
                 <Header />
-
-                <div className="Body2">
-
-                    <div className="Title"><a href="http://localhost:3000/bookStore">Home</a>/Cart</div>
+                 <div className="MyCart">My Cart </div>
+                <div className="Cartbody">
 
                     <div className="Cart">
-                        <div className="heading">My Cart</div>
+                        
 
                         {this.state.notes.slice(0).reverse().map((value: any) =>
 
                             <div key={value.id} className="cartitems">
 
-                                <img id="image2" src={book1} alt="Book" />
+                                <img id="image3" src={book1} alt="Book" />
 
-                                <div className="Paper2">
+                                <div className="CartPaper">
 
-                                    <div>BookName</div>
+                                    <div className="BookName">Source of Dream</div>
                                     <div className="price">Rs.{value.price}</div>
                                     <label>Quantity :</label>
                                     <input type="number" id="quantity" name="quantity" min="1" max="99"></input>
@@ -158,7 +156,7 @@ export default class Cart extends Component<{}, CartState> {
                             <div className="left"><strong>Customer Details</strong></div>
                             <div className="takeinput">
                                 <div className="giveinput">
-                                    <div className="a">
+                                    <div className="InputFields">
                                         <TextField
                                             error={this.state.NumberError}
                                             size="small"
@@ -170,7 +168,7 @@ export default class Cart extends Component<{}, CartState> {
                                             helperText={this.state.NumberError ? "Enter Phone Number" : ''}
                                         />
                                     </div>
-                                    <div className="a">
+                                    <div className="InputFields">
                                         <TextField
                                             error={this.state.NumberError}
                                             size="small"
@@ -184,7 +182,7 @@ export default class Cart extends Component<{}, CartState> {
                                     </div>
                                 </div>
                                 <div className="giveinput">
-                                    <div className="a">
+                                    <div className="InputFields">
                                         <TextField
                                             error={this.state.NumberError}
                                             size="small"
@@ -196,7 +194,7 @@ export default class Cart extends Component<{}, CartState> {
                                             helperText={this.state.NumberError ? "Enter Phone Number" : ''}
                                         />
                                     </div>
-                                    <div className="a">
+                                    <div className=".InputFields">
                                         <TextField
                                             error={this.state.NumberError}
                                             size="small"
@@ -209,19 +207,20 @@ export default class Cart extends Component<{}, CartState> {
                                         />
                                     </div>
                                 </div>
-                                <div className="b">
+                                <div className="AddressBar">
                                     <TextField
                                         error={this.state.NumberError}
                                         label="Address"
                                         type="text"
                                         name="text"
                                         variant="outlined"
+                                        fullWidth
                                         onChange={e => this.change(e)}
                                         helperText={this.state.NumberError ? "Enter Phone Number" : ''}
                                     />
                                 </div>
-                                <div className="giveinput">
-                                    <div className="a">
+                                <div className="giveinputnew">
+                                    <div className=".InputFields">
                                         <TextField
                                             error={this.state.NumberError}
                                             size="small"
@@ -233,7 +232,7 @@ export default class Cart extends Component<{}, CartState> {
                                             helperText={this.state.NumberError ? "Enter Phone Number" : ''}
                                         />
                                     </div>
-                                    <div className="a">
+                                    <div className="InputField">
                                         <TextField
                                             error={this.state.NumberError}
                                             size="small"
