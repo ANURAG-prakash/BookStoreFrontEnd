@@ -7,7 +7,7 @@ import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import { Redirect } from "react-router-dom";
-import Userservice from '../../services/userservices';
+import FavoriteIcon from '@material-ui/icons/Favorite';
 
 interface HeaderState {
     
@@ -33,6 +33,9 @@ export default class Header extends Component<{}, HeaderState> {
     toCart = () => {
         this.setState({ redirect: "/Cart" });
     }
+    toDashboard = () => {
+        this.setState({ redirect: "/Dashboard" });
+    }
 
     opendropdown = () => {
         this.setState({ openDropDown: true });
@@ -54,7 +57,7 @@ export default class Header extends Component<{}, HeaderState> {
                 <header>
 
                     <MenuBookSharpIcon className="MenuBookSharpIcon" />
-                    <div className="Name">Bookstore</div>
+                    <div className="Name"  onClick={this.toDashboard}>Bookstore</div>
 
                     <div className="inputbase">
 
@@ -68,17 +71,15 @@ export default class Header extends Component<{}, HeaderState> {
                     <div className="PersonOutlineOutlinedIcon">
                         {this.state.openDropDown ?
                             <div className="dropdown">
-                                <div className= "x"><PersonOutlineOutlinedIcon onClick={this.closedropdown} /></div>
-                                <div className="y">
+                                <div className= "Close"><PersonOutlineOutlinedIcon onClick={this.closedropdown} /></div>
+                                <div className="Open">
                                 <Menu
                                     id="simple-menu"
                                     keepMounted
                                     open={this.state.openDropDown}
                                     onClose={this.closedropdown}
                                     >
-                                    <MenuItem onClick={this.closedropdown}>Anurag</MenuItem>
-                                    <MenuItem onClick={this.toWishList}>My WishList</MenuItem>
-                                    <MenuItem onClick={this.closedropdown}>Logout</MenuItem>
+                                    <MenuItem onClick={this.closedropdown}>User</MenuItem>
 
                                 </Menu>
                                 </div>
@@ -91,6 +92,7 @@ export default class Header extends Component<{}, HeaderState> {
                         }
                     </div>
                     <div className="ShoppingCartIcon"><ShoppingCartIcon onClick={this.toCart} /> <div className="Style">Cart</div></div>
+                    <div className="WishlistIcon"><FavoriteIcon onClick={this.toWishList} /> <div className="Style">WishList</div></div>
 
                 </header>
             </div>

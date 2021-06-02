@@ -98,35 +98,38 @@ export default class WishList extends Component<IProps, IState> {
                 <Header />
                 <div className="Body ">
                     <div className="Title">WishList</div>
-                    <div className="Cart">
 
-                        <Grid item xs={12}>
-                            <Grid container justify="flex-start">
 
-                                {this.state.notes.slice(0).reverse().map((value: any) =>
+                    <Grid item xs={12}>
+                        <Grid container justify="flex-start">
 
-                                    <div key={value.id} className="cartitems">
-                                        
-                                            <img id="image3" src={book1} alt="Book" />
+                            {this.state.notes.slice(0).reverse().map((value: any) =>
+                                <div className="Cart">
+                                    <div key={value.id} className="cartItemsSummery">
 
-                                            <div className="Intro">
+                                        <img id="image3" src={book1} alt="Book" />
+                                        <div className="extra">
+                                        <div className="Intro">
 
-                                                <div className="price">Rs.{value.price}</div>
-                                                <p></p>
-                                                <div><button onClick = {() => this.movetoCart(value.bookId)}>Move to Cart</button> <DeleteOutlineOutlinedIcon className = "DeleteIcon"/> </div>
+                                            <div className="price">Rs.{value.price}</div>
+                                            <p></p>
+                                            <div><button onClick={() => this.movetoCart(value.bookId)}>Move to Cart</button>  </div>
+                                        </div>
+                                        <div className="DeleteIcon"><DeleteOutlineOutlinedIcon className="DeleteIcon" /></div>
 
-                                            </div>
+                                        </div>
 
-                                        
+
                                     </div>
+                                </div>
 
 
 
-                                )}
-                            </Grid>
+                            )}
                         </Grid>
+                    </Grid>
 
-                    </div>
+
                 </div>
                 <Footer />
             </div>

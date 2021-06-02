@@ -102,11 +102,11 @@ export default class Cart extends Component<{}, CartState> {
 
             <div>
                 <Header />
-                 <div className="MyCart">My Cart </div>
+                <div className="MyCart">My Cart </div>
                 <div className="Cartbody">
 
                     <div className="Cart">
-                        
+
 
                         {this.state.notes.slice(0).reverse().map((value: any) =>
 
@@ -305,23 +305,23 @@ export default class Cart extends Component<{}, CartState> {
 
                             {this.state.notes.slice(0).reverse().map((value: any) =>
 
-                                <div key={value.id} className="cartitems">
+                                <div key={value.id} className="cartItemsSummery">
 
                                     <img id="image2" src={book1} alt="Book" />
 
                                     <div className="Paper2">
 
-                                        <div>BookName</div>
+                                        <div>Sourace of Dreams</div>
                                         <div className="price">Rs.{value.price}</div>
                                     </div>
 
-                                    
+
                                 </div>
 
                             )}
                             <div className="Place">
-                            <Button className="buttonsize" onClick={this.openDetailsforSummary} size="small" color="primary" variant="contained">
-                            Checkout
+                                <Button className="buttonsize" onClick={this.openDetailsforSummary} size="small" color="primary" variant="contained">
+                                    Checkout
                             </Button>
                             </div>
                         </div>

@@ -1,6 +1,5 @@
 .Cartbody{
-    top: 0px;
-left: 0px;
+   padding: 0 0 20px 0;
 min-height: 1216px;
 background: #FFFFFF 0% 0% no-repeat padding-box;
 opacity: 1;
@@ -64,6 +63,9 @@ input{
 
 .cartitems{
     display: flex;
+    width: 730px;
+    padding: 10px;
+    border: 0.5px solid #cfcfcf;
 }
 
 .cartitems2{
@@ -164,6 +166,16 @@ input{
 }
 
 .cartitems {
+    display: flex;
+    align-items: flex-end;
+}
+
+
+.cartItemsSummery{
+    display: flex;
+
+}
+.extra{
     display: flex;
     align-items: flex-end;
 }

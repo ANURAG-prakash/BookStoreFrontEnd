@@ -59,6 +59,15 @@ export default class BookComponent extends Component<{}, BookComponentState> {
     }
 
 
+    addtoWishList = (value : any) => {
+        axios_service.AddtoWishList(value).then((result) => {
+            console.log(result.data);
+        }).catch(() => {
+
+        })
+    }
+
+
     render() {
         console.log(this.state.notes)
         return (
@@ -89,7 +98,7 @@ export default class BookComponent extends Component<{}, BookComponentState> {
                                      </Button>
                                             </div>
                                             <div >
-                                                <Button className="buttonsize" size="small" variant="contained">
+                                                <Button className="buttonsize" onClick = {() => this.addtoWishList(value.id)} size="small" variant="contained">
                                                     WishList
                                       </Button>
                                             </div>
