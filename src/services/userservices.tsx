@@ -38,6 +38,11 @@ class Userservice {
         console.log(`${baseUrl}User/${id}/MoveToCart`, id, configbook);
         return axiosservice.putMethod(`${baseUrl}User/${id}/MoveToCart`, id, configbook)
     }
+    AddtoWishList = (id : any) => {
+        console.log(`${baseUrl}User/${id}/MoveToWishList`, id, configbook);
+        return axiosservice.putMethod(`${baseUrl}User/${id}/MoveToWishList`, id, configbook)
+    }
+    
 
 }
 
