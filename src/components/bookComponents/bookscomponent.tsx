@@ -37,8 +37,8 @@ export default class BookComponent extends Component<{}, BookComponentState> {
     }
     GetData = () => {
         axios_service.Getdata().then((result) => {
-            console.log(result.data.books);
-            this.setState({ notes: result.data.books });
+            console.log(result.data.book);
+            this.setState({ notes: result.data.book });
             console.log(this.state.notes);
             console.log(this.state.notes.bookName[0]);
         }).catch(() => {
@@ -60,6 +60,7 @@ export default class BookComponent extends Component<{}, BookComponentState> {
 
 
     render() {
+        console.log(this.state.notes)
         return (
             <Grid item xs={8}>
                 <Grid container justify="flex-start">

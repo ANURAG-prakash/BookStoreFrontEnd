@@ -24,6 +24,10 @@ header{
     border: 1px solid #cfcfcf;
     
 }
+.Title{
+    padding-top: 20px;
+    padding-bottom: 30px;
+}
 .CartPaper{
     padding-left: 40px;
 }

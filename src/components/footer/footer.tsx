@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import '../../pages/BookStoreDashboard/BookStoreDashboard.css'
 
 export default class Footer extends Component {
     render() {
