@@ -55,7 +55,7 @@ export default class Header extends Component<{}, HeaderState> {
         return (
             <div>
                 <header>
-
+                 <div className="header-part1">
                     <MenuBookSharpIcon className="MenuBookSharpIcon" />
                     <div className="Name"  onClick={this.toDashboard}>Bookstore</div>
 
@@ -67,6 +67,8 @@ export default class Header extends Component<{}, HeaderState> {
                             inputProps={{ 'aria-label': 'search' }}
                         />
                     </div>
+                    </div>
+                    <div className="header-part2">
 
                     <div className="PersonOutlineOutlinedIcon">
                         {this.state.openDropDown ?
@@ -93,7 +95,7 @@ export default class Header extends Component<{}, HeaderState> {
                     </div>
                     <div className="ShoppingCartIcon"><ShoppingCartIcon onClick={this.toCart} /> <div className="Style">Cart</div></div>
                     <div className="WishlistIcon"><FavoriteIcon onClick={this.toWishList} /> <div className="Style">WishList</div></div>
-
+                    </div>
                 </header>
             </div>
         )

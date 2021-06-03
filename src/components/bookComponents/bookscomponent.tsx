@@ -86,7 +86,7 @@ export default class BookComponent extends Component<{}, BookComponentState> {
     render() {
         console.log(this.state.notes)
         return (
-            <Grid item xs={8}>
+            <Grid item xs={10}>
                 <Grid container justify="flex-start">
                     {this.state.notes.slice(0).reverse().map((value: any, index: any) =>
 
@@ -120,7 +120,7 @@ export default class BookComponent extends Component<{}, BookComponentState> {
                                             <div className="bookbuttons">
 
                                                 <div >
-                                                    <Button className="buttonsize" onClick={() => this.addtoCart(value.id, index)} size="small" variant="contained" color="secondary">
+                                                    <Button className="buttonsize" onClick={() => this.addtoCart(value.id, index)} size="small" variant="contained" color="primary">
                                                         Add to Bag
                                                     </Button>
                                                 </div>

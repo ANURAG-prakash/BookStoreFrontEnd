@@ -96,9 +96,10 @@ export default class WishList extends Component<IProps, IState> {
         return (
             <div>
                 <Header />
-                <div className="Body ">
-                    <div className="Title">WishList</div>
-
+                <div className="Container1">
+                    <div className="Title1">WishList</div>
+                   
+                   <div className="GridContainer">
 
                     <Grid item xs={12}>
                         <Grid container justify="flex-start">
@@ -110,7 +111,7 @@ export default class WishList extends Component<IProps, IState> {
                                         <img id="image3" src={book1} alt="Book" />
                                         <div className="extra">
                                         <div className="Intro">
-
+                                             <div className="NameDiscription">Source of Dream</div>
                                             <div className="price">Rs.{value.price}</div>
                                             <p></p>
                                             <div><button onClick={() => this.movetoCart(value.bookId)}>Move to Cart</button>  </div>
@@ -129,7 +130,7 @@ export default class WishList extends Component<IProps, IState> {
                         </Grid>
                     </Grid>
 
-
+                    </div>
                 </div>
                 <Footer />
             </div>

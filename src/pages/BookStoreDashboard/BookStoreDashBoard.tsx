@@ -38,7 +38,7 @@ export default class BookStore extends Component<{}, BookStoreState> {
 
             <div>
                 <Header/>
-                <div className="Body">
+                <div className="Container">
                     <div className="Title">Books</div>
                     <Books/>
                 </div>

@@ -200,7 +200,7 @@ export default class Cart extends Component<{}, CartState> {
             <div>
                 <Header />
                 <div className="MyCart">My Cart </div>
-                <div className="Cartbody">
+                <div className="ConatinerCart">
 
                     <div className="Cart">
 
@@ -236,7 +236,9 @@ export default class Cart extends Component<{}, CartState> {
 
                         )}
                     </div>
-
+                          
+                    <div className="space1"></div>
+                    
                     {this.state.openDetails ?
 
                         <div className="openDetails">
@@ -394,6 +396,8 @@ export default class Cart extends Component<{}, CartState> {
                         </div>
                     }
 
+                        <div className="space1"></div>
+
                     {this.state.openDetailsSummary ?
 
 
@@ -432,6 +436,8 @@ export default class Cart extends Component<{}, CartState> {
 
                     }
                 </div>
+
+                <div className="space1"></div>
                 <Footer />
 
             </div>
