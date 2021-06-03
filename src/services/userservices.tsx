@@ -42,6 +42,9 @@ class Userservice {
         console.log(`${baseUrl}User/${id}/MoveToWishList`, id, configbook);
         return axiosservice.putMethod(`${baseUrl}User/${id}/MoveToWishList`, id, configbook)
     }
+    Order = (id : any, quantity : any) => {
+        return axiosservice.putMethod(`https://localhost:44313/Order/${id}/${quantity}`, id, configbook)
+    }
     
 
 }

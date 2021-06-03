@@ -216,6 +216,7 @@ opacity: 1;
 }
 
 footer{
+    padding-top: 10px;
    display: flex;
    align-items: center;
    justify-content: center;
@@ -243,7 +244,9 @@ opacity: 1;
     width: 100px;
 }
 
-
+.buttonsize1{
+    width: 200px;
+}
 
 
 
@@ -253,4 +256,9 @@ opacity: 1;
 
 .Open{
     position: absolute;
+}
+
+.MuiButton-containedSecondary {
+   background-color:  #8b2626;
+  
 }

@@ -79,7 +79,7 @@ export default class Header extends Component<{}, HeaderState> {
                                     open={this.state.openDropDown}
                                     onClose={this.closedropdown}
                                     >
-                                    <MenuItem onClick={this.closedropdown}>User</MenuItem>
+                                    <MenuItem onClick={this.closedropdown}>Welcome Anurag</MenuItem>
 
                                 </Menu>
                                 </div>

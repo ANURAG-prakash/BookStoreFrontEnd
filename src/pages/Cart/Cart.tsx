@@ -27,13 +27,24 @@ interface CartState {
     openDetails: boolean,
     openDetailsSummary: boolean,
     FullName: string,
+    Number: string,
+    PinCode: any,
+    Locality: string,
+    Address: string,
+    City: string,
+    LandMark?: string,
     Email: string,
     Password: string,
-    Number: string,
     FullNameError: boolean,
+    NumberError: boolean,
+    PinCodeError: boolean,
+    LocalityError: boolean,
+    AddressError: boolean,
+    CityError: boolean,
+    LandMarkError: boolean,
     EmailError: boolean,
-    PasswordError: boolean,
-    NumberError: boolean
+    PasswordError: boolean
+    
 }
 
 export default class Cart extends Component<{}, CartState> {
@@ -47,13 +58,24 @@ export default class Cart extends Component<{}, CartState> {
             openDetails: false,
             openDetailsSummary: false,
             FullName: '',
+            Number: '',
+            PinCode: '',
+            Locality: '',
+            Address: '',
+            City: '',
+            LandMark: '',
             Email: '',
             Password: '',
-            Number: '',
             FullNameError: false,
+            NumberError: false,
+            PinCodeError: false,
+            LocalityError: false,
+            AddressError: false,
+            CityError: false,
+            LandMarkError: false,
             EmailError: false,
-            PasswordError: false,
-            NumberError: false
+            PasswordError: false
+            
         }
 
     }
@@ -63,6 +85,49 @@ export default class Cart extends Component<{}, CartState> {
         console.log(e.target.value);
         this.setState({ Email: e.target.value });
     }
+
+    changeFullName = (e: any) => {
+
+        console.log(e.target.value);
+        this.setState({ FullName: e.target.value });
+    }
+
+    changeNumber = (e: any) => {
+
+        console.log(e.target.value);
+        this.setState({ Number: e.target.value });
+    }
+
+    changePincode = (e: any) => {
+
+        console.log(e.target.value);
+        this.setState({ PinCode: e.target.value });
+    }
+
+    changeLocality = (e: any) => {
+
+        console.log(e.target.value);
+        this.setState({ Locality: e.target.value });
+    }
+
+    changeAddress = (e: any) => {
+
+        console.log(e.target.value);
+        this.setState({ Address : e.target.value });
+    }
+
+    changeCity = (e: any) => {
+
+        console.log(e.target.value);
+        this.setState({ City : e.target.value });
+    }
+
+    changeLandmark = (e: any) => {
+
+        console.log(e.target.value);
+        this.setState({ LandMark : e.target.value });
+    }
+
 
     componentDidMount() {
         this.GetCart();
@@ -79,6 +144,13 @@ export default class Cart extends Component<{}, CartState> {
         })
     }
 
+    orderItems = (id: any, quantity: any) => {
+        axios_service.Order(id, quantity).then((result) => {
+            console.log(result.data);
+        }).catch(() => {
+
+        })
+    }
     toCart = () => {
         this.setState({ redirect: "/Cart" });
     }
@@ -87,10 +159,35 @@ export default class Cart extends Component<{}, CartState> {
         this.setState({ openDetails: true });
     }
 
-    openDetailsforSummary = () => {
-        this.setState({ openDetailsSummary: true });
+    validation = () => {
+        let isError : boolean = false;
+        const errors : any = this.state;
+
+        errors.FullNameError = this.state.FullName === '' ? true : false;
+        errors.NumberError = this.state.Number === '' ? true : false;
+        errors.PinCodeError = this.state.PinCode === '' ? true : false;
+        errors.LocalityError = this.state.Locality === '' ? true : false;
+        errors.AddressError = this.state.Address === '' ? true : false;
+        errors.CityError = this.state.City === '' ? true : false;
+        errors.LandMarkError = this.state.LandMark === '' ? true : false;
+
+        this.setState({
+    
+          ...errors
+        })
+        return isError = (errors.FullName !== '' && errors.Number !== ''
+        && errors.PinCode !== '' && errors.Locality !== ''
+        && errors.Address !== '' && errors.City !== ''
+        && errors.LandMark !== '') ? true : false
     }
 
+    openDetailsforSummary = () => {
+        var isValidated = this.validation();
+        console.log(isValidated);
+        if (isValidated) {
+        this.setState({ openDetailsSummary: true });
+        };
+    }
     render() {
 
         if (this.state.redirect) {
@@ -148,14 +245,14 @@ export default class Cart extends Component<{}, CartState> {
                                 <div className="giveinput">
                                     <div className="InputFields">
                                         <TextField
-                                            error={this.state.NumberError}
+                                            error={this.state.FullNameError}
                                             size="small"
-                                            label="Name"
+                                            label="FullName"
                                             type="text"
                                             name="text"
                                             variant="outlined"
-                                            onChange={e => this.change(e)}
-                                            helperText={this.state.NumberError ? "Enter Phone Number" : ''}
+                                            onChange={e => this.changeFullName(e)}
+                                            helperText={this.state.FullNameError ? "Enter FullName" : ''}
                                         />
                                     </div>
                                     <div className="InputFields">
@@ -166,7 +263,7 @@ export default class Cart extends Component<{}, CartState> {
                                             type="Number"
                                             name="Number"
                                             variant="outlined"
-                                            onChange={e => this.change(e)}
+                                            onChange={e => this.changeNumber(e)}
                                             helperText={this.state.NumberError ? "Enter Phone Number" : ''}
                                         />
                                     </div>
@@ -174,64 +271,64 @@ export default class Cart extends Component<{}, CartState> {
                                 <div className="giveinput">
                                     <div className="InputFields">
                                         <TextField
-                                            error={this.state.NumberError}
+                                            error={this.state.PinCodeError}
                                             size="small"
                                             label="Pin Code"
                                             type="text"
                                             name="text"
                                             variant="outlined"
-                                            onChange={e => this.change(e)}
-                                            helperText={this.state.NumberError ? "Enter Phone Number" : ''}
+                                            onChange={e => this.changePincode(e)}
+                                            helperText={this.state.PinCodeError ? "Enter Pincode " : ''}
                                         />
                                     </div>
                                     <div className=".InputFields">
                                         <TextField
-                                            error={this.state.NumberError}
+                                            error={this.state.LocalityError}
                                             size="small"
                                             label="Locality"
                                             type="text"
                                             name="text"
                                             variant="outlined"
-                                            onChange={e => this.change(e)}
-                                            helperText={this.state.NumberError ? "Enter Phone Number" : ''}
+                                            onChange={e => this.changeLocality(e)}
+                                            helperText={this.state.LocalityError ? "Enter Locality" : ''}
                                         />
                                     </div>
                                 </div>
                                 <div className="AddressBar">
                                     <TextField
-                                        error={this.state.NumberError}
+                                        error={this.state.AddressError}
                                         label="Address"
                                         type="text"
                                         name="text"
                                         variant="outlined"
                                         fullWidth
-                                        onChange={e => this.change(e)}
-                                        helperText={this.state.NumberError ? "Enter Phone Number" : ''}
+                                        onChange={e => this.changeAddress(e)}
+                                        helperText={this.state.AddressError ? "Enter Address" : ''}
                                     />
                                 </div>
                                 <div className="giveinputnew">
                                     <div className=".InputFields">
                                         <TextField
-                                            error={this.state.NumberError}
+                                            error={this.state.CityError}
                                             size="small"
-                                            label="City/Town"
+                                            label="City"
                                             type="text"
                                             name="text"
                                             variant="outlined"
-                                            onChange={e => this.change(e)}
-                                            helperText={this.state.NumberError ? "Enter Phone Number" : ''}
+                                            onChange={e => this.changeCity(e)}
+                                            helperText={this.state.CityError ? "Enter City" : ''}
                                         />
                                     </div>
                                     <div className="InputField">
                                         <TextField
-                                            error={this.state.NumberError}
+                                            error={this.state.LandMarkError}
                                             size="small"
-                                            label="Landmark"
+                                            label="LandMark"
                                             type="text"
                                             name="text"
                                             variant="outlined"
-                                            onChange={e => this.change(e)}
-                                            helperText={this.state.NumberError ? "Enter Phone Number" : ''}
+                                            onChange={e => this.changeLandmark(e)}
+                                            helperText={this.state.LandMarkError ? "Enter LandMark" : ''}
                                         />
                                     </div>
                                 </div>
@@ -316,14 +413,16 @@ export default class Cart extends Component<{}, CartState> {
                                     </div>
 
 
-                                </div>
 
+
+
+                                    <div className="Place">
+                                        <Button className="buttonsize" onClick={() => this.orderItems(value.bookId, value.quantity)} size="small" color="primary" variant="contained">
+                                            Checkout
+                                </Button>
+                                    </div>
+                                </div>
                             )}
-                            <div className="Place">
-                                <Button className="buttonsize" onClick={this.openDetailsforSummary} size="small" color="primary" variant="contained">
-                                    Checkout
-                            </Button>
-                            </div>
                         </div>
                         :
 
@@ -333,7 +432,6 @@ export default class Cart extends Component<{}, CartState> {
 
                     }
                 </div>
-
                 <Footer />
 
             </div>
