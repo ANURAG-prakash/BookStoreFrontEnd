@@ -147,6 +147,7 @@ export default class Cart extends Component<{}, CartState> {
     orderItems = (id: any, quantity: any) => {
         axios_service.Order(id, quantity).then((result) => {
             console.log(result.data);
+            this.setState({ redirect: "/Dashboard" });
         }).catch(() => {
 
         })

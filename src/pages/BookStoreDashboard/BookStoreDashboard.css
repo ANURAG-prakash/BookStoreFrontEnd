@@ -315,3 +315,11 @@ header{
         position: absolute;
         position: relative;
     }
+
+    .PersonOutlineOutlinedIcon{
+        display: flex;
+        flex-direction: column;
+        margin-left: 0px;
+        color: white;
+    }
+    
