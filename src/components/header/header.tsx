@@ -8,11 +8,18 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import { Redirect } from "react-router-dom";
 import FavoriteIcon from '@material-ui/icons/Favorite';
+import Badge from '@material-ui/core/Badge';
+import Userservice from '../../services/userservices';
+
+
+
+const axios_service = new Userservice();
 
 interface HeaderState {
     
-    redirect?: any,
-    openDropDown?: boolean
+    redirect: any,
+    openDropDown: boolean,
+    notes:any
 }
 
 export default class Header extends Component<{}, HeaderState> {
@@ -21,7 +28,8 @@ export default class Header extends Component<{}, HeaderState> {
         this.state = {
             
             redirect: null,
-            openDropDown: false
+            openDropDown: false,
+            notes:[]
         }
 
     }
@@ -43,6 +51,20 @@ export default class Header extends Component<{}, HeaderState> {
 
     closedropdown = () => {
         this.setState({ openDropDown: false });
+    }
+    componentDidMount() {
+        this.GetCart();
+    }
+
+    GetCart = () => {
+        axios_service.Getcart().then((result) => {
+            console.log(result.data.book);
+            this.setState({ notes: result.data.book });
+            console.log(this.state.notes);
+            console.log(this.state.notes.bookName[0]);
+        }).catch(() => {
+
+        })
     }
 
     render() {
@@ -71,9 +93,11 @@ export default class Header extends Component<{}, HeaderState> {
                     <div className="header-part2">
 
                     <div className="PersonOutlineOutlinedIcon">
-                        {this.state.openDropDown ?
                             <div className="dropdown">
-                                <div className= "Close"><PersonOutlineOutlinedIcon onClick={this.closedropdown} /></div>
+                            <div className= "close">
+                                <PersonOutlineOutlinedIcon onClick={this.opendropdown} />
+                                <div className="Style"> Person </div>
+                                </div>
                                 <div className="Open">
                                 <Menu
                                     id="simple-menu"
@@ -86,14 +110,13 @@ export default class Header extends Component<{}, HeaderState> {
                                 </Menu>
                                 </div>
                             </div>
-                            :
-                            <div>
-                                <PersonOutlineOutlinedIcon onClick={this.opendropdown} />
-                                <div className="Style"> Person </div>
-                            </div>
-                        }
                     </div>
-                    <div className="ShoppingCartIcon"><ShoppingCartIcon onClick={this.toCart} /> <div className="Style">Cart</div></div>
+                    <div className="ShoppingCartIcon">
+                    <Badge badgeContent={this.state.notes.length} >
+                        <ShoppingCartIcon onClick={this.toCart} /> 
+                        </Badge>
+                        <div className="Style">Cart</div>
+                        </div>
                     <div className="WishlistIcon"><FavoriteIcon onClick={this.toWishList} /> <div className="Style">WishList</div></div>
                     </div>
                 </header>
