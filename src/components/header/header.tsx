@@ -35,11 +35,17 @@ export default class Header extends Component<{}, HeaderState> {
     }
 
     toWishList = () => {
+        console.log(window.location.href)
+        if(window.location.href !== "http://localhost:3000/Wishlist"){
         this.setState({ redirect: "/Wishlist" });
+    }
     }
 
     toCart = () => {
+        console.log(window.location.href)
+        if(window.location.href !== "http://localhost:3000/Cart"){
         this.setState({ redirect: "/Cart" });
+        }
     }
     toDashboard = () => {
         this.setState({ redirect: "/Dashboard" });

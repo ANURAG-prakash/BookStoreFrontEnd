@@ -1,18 +1,16 @@
 .ConatinerCart{
    padding: 0 0 20px 0;
-min-height: 64vh;
+min-height: 72vh;
 background: #FFFFFF 0% 0% no-repeat padding-box;
 opacity: 1;
-margin-left: 174px;
+padding: 10px 10% 20px 10%;
 display: flex;
 flex-direction: column;
 }
 
 .MyCart{
-    padding-top: 10px ;
-    padding-bottom: 20px;
-    padding-left: 150px;
-    font-size: 30px;
+   padding: 10px 10% 20px 10%;
+    font-size: 20px;
 }
 .Cart{
     width: 750px;
@@ -72,7 +70,10 @@ input{
 
 
 .PlaceOrder{
-   padding: 20px 20px 20px 220px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    padding: 10px 10px 0 10px;
 }
 
 #quantity{

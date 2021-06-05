@@ -97,7 +97,7 @@ export default class WishList extends Component<IProps, IState> {
             <div>
                 <Header />
                 <div className="Container1">
-                    <div className="Title1">WishList</div>
+                    <div className="Title1">WishList({this.state.notes.length}) </div>
                    
                    <div className="GridContainer">
 

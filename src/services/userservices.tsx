@@ -45,6 +45,15 @@ class Userservice {
     Order = (id : any, quantity : any) => {
         return axiosservice.putMethod(`https://localhost:44313/Order/${id}/${quantity}`, id, configbook)
     }
+
+    DeleteCart = (id : any) => {
+        return axiosservice.deleteMethod(`${baseUrl}Wishlist/${id.bookId}`, configbook)
+    }
+
+    DeleteWishlist = (id : any) => {
+        return axiosservice.deleteMethod(`${baseUrl}Wishlist/${id.bookId}`, configbook)
+    }
+    
     
 
 }

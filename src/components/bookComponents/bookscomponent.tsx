@@ -14,8 +14,19 @@ const axios_service = new Userservice();
 interface BookComponentState {
 
     notes?: any,
+    cartnotes: any,
     redirect: any,
     openDropDown: boolean
+    openbutton: boolean
+
+}
+
+function CheckTF(id: any, cartnotes: any) {
+    cartnotes.forEach((value: any) => {
+        if (value.bookId === id) {
+            return true;
+        }
+    })
 
 }
 
@@ -25,15 +36,17 @@ export default class BookComponent extends Component<{}, BookComponentState> {
         super(props);
         this.state = {
 
-            redirect: null,
             notes: [],
-            openDropDown: false
-
+            cartnotes: [],
+            redirect: null,
+            openDropDown: false,
+            openbutton: false
         }
 
     }
     componentDidMount() {
         this.GetData();
+        this.GetCart();
     }
     GetData = () => {
         axios_service.Getdata().then((result) => {
@@ -42,6 +55,25 @@ export default class BookComponent extends Component<{}, BookComponentState> {
 
         }).catch((ex) => {
             console.log(ex);
+        })
+    }
+    CheckTF = (id: any): boolean => {
+        let check: boolean = false;
+        this.state.cartnotes.forEach((value: any) => {
+            if (value.bookId === id) {
+                check = true;
+            }
+        })
+
+        return check;
+
+    }
+    GetCart = () => {
+        axios_service.Getcart().then((result) => {
+            this.setState({ cartnotes: result.data.book });
+            console.log(this.state.cartnotes);
+        }).catch(() => {
+
         })
     }
 
@@ -84,7 +116,8 @@ export default class BookComponent extends Component<{}, BookComponentState> {
 
 
     render() {
-        console.log(this.state.notes)
+
+
         return (
             <Grid item xs={10}>
                 <Grid container justify="flex-start">
@@ -105,11 +138,13 @@ export default class BookComponent extends Component<{}, BookComponentState> {
                                         <div className="by">by {value.authors}</div>
                                         <div className="rating">4.5 <div className="number">({value.availableBooks})</div></div>
                                         <div className="price">Rs.{value.price}</div>
-                                        {value.active ?
+                                        {/* {value.active ? */}
+                                        {this.CheckTF(value.id)
+                                            ?
 
                                             <div className="bookbuttons2">
 
-                                                <Button className="buttonsize1" size="small" variant="contained" color="primary"> 
+                                                <Button className="buttonsize1" size="small" variant="contained" color="primary">
                                                     Added to Bag
                                                 </Button>
 
@@ -120,7 +155,7 @@ export default class BookComponent extends Component<{}, BookComponentState> {
                                             <div className="bookbuttons">
 
                                                 <div >
-                                                    <Button className="buttonsize" onClick={() => this.addtoCart(value.id, index)} size="small" variant="contained" color="primary">
+                                                    <Button className="buttonsize" onClick={() => this.addtoCart(value.id, index)} size="small" variant="contained" color="secondary">
                                                         Add to Bag
                                                     </Button>
                                                 </div>
@@ -132,6 +167,8 @@ export default class BookComponent extends Component<{}, BookComponentState> {
 
                                             </div>
                                         }
+                                       
+
                                     </div>
 
                                 </div>

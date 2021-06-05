@@ -4,25 +4,50 @@ import { Redirect } from "react-router-dom";
 import Header from '../../components/header/header';
 import Footer from '../../components/footer/footer';
 import Books from '../../components/bookComponents/bookscomponent';
+import Userservice from '../../services/userservices';
+
+
+
+
+const axios_service = new Userservice();
 
 
 
 
 
-interface BookStoreState {
-    
-    redirect: any
-    
+interface BookState {
+
+    notes?: any,
+    redirect: any,
+    openDropDown: boolean
+
 }
 
-export default class BookStore extends Component<{}, BookStoreState> {
+export default class BookComponent extends Component<{}, BookState> {
 
     constructor(props: any) {
         super(props);
         this.state = {
-            redirect: null
+
+            redirect: null,
+            notes: [],
+            openDropDown: false
+
         }
 
+    }
+    componentDidMount() {
+        this.GetData();
+    }
+
+    GetData = () => {
+        axios_service.Getdata().then((result) => {
+
+            this.setState({ notes: result.data.book.map((obj: object) => (obj = { ...obj, active: false })) });
+
+        }).catch((ex) => {
+            console.log(ex);
+        })
     }
 
    
@@ -39,7 +64,7 @@ export default class BookStore extends Component<{}, BookStoreState> {
             <div>
                 <Header/>
                 <div className="Container">
-                    <div className="Title">Books</div>
+                    <div className="Title">Books({this.state.notes.length}) </div>
                     <Books/>
                 </div>
 

@@ -80,6 +80,25 @@ export default class Cart extends Component<{}, CartState> {
 
     }
 
+    change0 = (e: any, value: any, index: any) => {
+
+        console.log(e);
+        e += 1
+        console.log(e);
+        let findIndex = this.state.notes.findIndex((element: any) => element.id == value);
+
+        console.log(findIndex);
+
+        let newArray = [...this.state.notes]
+
+        newArray[findIndex] = { ...newArray[findIndex], quantity: e }
+
+        console.log(newArray[findIndex]);
+
+        this.setState({ notes: newArray });
+
+    }
+
     change = (e: any) => {
 
         console.log(e.target.value);
@@ -147,7 +166,7 @@ export default class Cart extends Component<{}, CartState> {
     orderItems = (id: any, quantity: any) => {
         axios_service.Order(id, quantity).then((result) => {
             console.log(result.data);
-            this.setState({ redirect: "/Dashboard" });
+            this.setState({ redirect: "/Last" });
         }).catch(() => {
 
         })
@@ -200,13 +219,15 @@ export default class Cart extends Component<{}, CartState> {
 
             <div>
                 <Header />
-                <div className="MyCart">My Cart </div>
+                
                 <div className="ConatinerCart">
 
+                
+
                     <div className="Cart">
+                    <div className="MyCart">My Cart({this.state.notes.length}) </div>
 
-
-                        {this.state.notes.slice(0).reverse().map((value: any) =>
+                        {this.state.notes.slice(0).reverse().map((value: any , index: any) =>
 
                             <div key={value.id} className="cartitems">
 
@@ -217,9 +238,11 @@ export default class Cart extends Component<{}, CartState> {
                                     <div className="BookName">Source of Dream</div>
                                     <div className="price">Rs.{value.price}</div>
                                     <label>Quantity :</label>
-                                    <input type="number" id="quantity" name="quantity" min="1" max="99"></input>
-
+                                    <input onChange={e => this.change0(value.quantity, value.id, index)} type="number" id="quantity" name="quantity" min="1" max="99" ></input>
                                 </div>
+                                </div>
+
+                                  )}
 
                                 {this.state.openDetails ?
 
@@ -233,9 +256,7 @@ export default class Cart extends Component<{}, CartState> {
                                     </Button>
                                     </div>
                                 }
-                            </div>
-
-                        )}
+                           
                     </div>
                           
                     <div className="space1"></div>
@@ -381,7 +402,7 @@ export default class Cart extends Component<{}, CartState> {
 
                                         <div className="PlaceOrder">
                                             <Button className="buttonsize" onClick={this.openDetailsforSummary} size="small" color="primary" variant="contained">
-                                                Place Order
+                                                Continue
                                             </Button>
                                         </div>
                                     }
