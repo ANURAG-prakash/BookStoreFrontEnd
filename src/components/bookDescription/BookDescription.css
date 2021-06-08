@@ -1,14 +1,15 @@
 .main-conatiner{
-    border-radius: 0.5px;
-    border-color: rgb(216, 214, 214);
+    border-style:solid;
+    border-radius: 3px;
+    border-color: rgb(46, 44, 44);
     min-width: none;
     min-height: none;
-    max-height: 150px;
-    max-width:150px ;
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
+    max-height: 30%;
+    max-width:25% ;
+   
 
+}
+.DetailsConatiner{
+    padding:15px;
+    
 }
