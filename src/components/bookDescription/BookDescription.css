@@ -1,0 +1,14 @@
+.main-conatiner{
+    border-radius: 0.5px;
+    border-color: rgb(216, 214, 214);
+    min-width: none;
+    min-height: none;
+    max-height: 150px;
+    max-width:150px ;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+
+}

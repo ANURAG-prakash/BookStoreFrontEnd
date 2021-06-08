@@ -163,13 +163,17 @@ export default class Cart extends Component<{}, CartState> {
         })
     }
 
-    orderItems = (id: any, quantity: any) => {
-        axios_service.Order(id, quantity).then((result) => {
-            console.log(result.data);
-            this.setState({ redirect: "/Last" });
-        }).catch(() => {
+    orderItems = () => {
+        this.state.notes.forEach((element : any )=> {
+            axios_service.Order(element.bookId, element.quantity).then((result) => {
+                console.log(result.data);
+            }).catch(() => {
+    
+            })
+        });
 
-        })
+        this.setState({ redirect: "/Last" });
+
     }
     toCart = () => {
         this.setState({ redirect: "/Cart" });
@@ -208,6 +212,15 @@ export default class Cart extends Component<{}, CartState> {
         this.setState({ openDetailsSummary: true });
         };
     }
+
+    delete = (value : any) => {
+        axios_service.DeleteCart(value).then((result) => {
+            console.log(result.data);
+            
+        }).catch(() => {
+
+        })
+    }
     render() {
 
         if (this.state.redirect) {
@@ -239,6 +252,7 @@ export default class Cart extends Component<{}, CartState> {
                                     <div className="price">Rs.{value.price}</div>
                                     <label>Quantity :</label>
                                     <input onChange={e => this.change0(value.quantity, value.id, index)} type="number" id="quantity" name="quantity" min="1" max="99" ></input>
+                                    <div className = "DeleteIcon" onClick = {() => this.delete(value.bookId)}>(delete)</div>
                                 </div>
                                 </div>
 
@@ -442,13 +456,14 @@ export default class Cart extends Component<{}, CartState> {
 
 
 
-                                    <div className="Place">
-                                        <Button className="buttonsize" onClick={() => this.orderItems(value.bookId, value.quantity)} size="small" color="primary" variant="contained">
+                                   
+                                </div>
+                            )}
+                             <div className="Place">
+                                        <Button className="buttonsize" onClick={() => this.orderItems} size="small" color="primary" variant="contained">
                                             Checkout
                                 </Button>
                                     </div>
-                                </div>
-                            )}
                         </div>
                         :
 

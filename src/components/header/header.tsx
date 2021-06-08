@@ -10,6 +10,9 @@ import { Redirect } from "react-router-dom";
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import Badge from '@material-ui/core/Badge';
 import Userservice from '../../services/userservices';
+import '../../pages/BookStoreDashboard/BookStoreDashboard.css'
+import Button from '@material-ui/core/Button';
+
 
 
 
@@ -49,6 +52,10 @@ export default class Header extends Component<{}, HeaderState> {
     }
     toDashboard = () => {
         this.setState({ redirect: "/Dashboard" });
+    }
+
+    toLogout = () => {
+        this.setState({ redirect: "/LoginSignUp" });
     }
 
     opendropdown = () => {
@@ -106,12 +113,14 @@ export default class Header extends Component<{}, HeaderState> {
                                 </div>
                                 <div className="Open">
                                 <Menu
-                                    id="simple-menu"
+                                    className="menulist"
                                     keepMounted
                                     open={this.state.openDropDown}
                                     onClose={this.closedropdown}
+
                                     >
                                     <MenuItem onClick={this.closedropdown}>Welcome Anurag</MenuItem>
+                                    <MenuItem onClick={this.toLogout} >< Button className="buttonsize"  size="small"  variant="contained">Logout</Button></MenuItem>
 
                                 </Menu>
                                 </div>
@@ -127,6 +136,6 @@ export default class Header extends Component<{}, HeaderState> {
                     </div>
                 </header>
             </div>
-        )
+        )  
     }
 }

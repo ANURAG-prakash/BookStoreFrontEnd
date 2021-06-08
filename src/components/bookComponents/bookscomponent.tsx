@@ -119,7 +119,7 @@ export default class BookComponent extends Component<{}, BookComponentState> {
 
 
         return (
-            <Grid item xs={10}>
+            <Grid item xs={12}>
                 <Grid container justify="flex-start">
                     {this.state.notes.slice(0).reverse().map((value: any, index: any) =>
 

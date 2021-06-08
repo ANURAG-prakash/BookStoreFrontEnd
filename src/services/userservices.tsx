@@ -47,11 +47,11 @@ class Userservice {
     }
 
     DeleteCart = (id : any) => {
-        return axiosservice.deleteMethod(`${baseUrl}Wishlist/${id.bookId}`, configbook)
+        return axiosservice.deleteMethod(`${baseUrl}Cart/${id}`, configbook)
     }
 
-    DeleteWishlist = (id : any) => {
-        return axiosservice.deleteMethod(`${baseUrl}Wishlist/${id.bookId}`, configbook)
+    DeleteWishlist = (id  : any) => {
+        return axiosservice.deleteMethod(`${baseUrl}Wishlist/${id}`, configbook)
     }
     
     

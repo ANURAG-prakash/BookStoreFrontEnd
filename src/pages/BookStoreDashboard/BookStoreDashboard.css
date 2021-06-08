@@ -71,11 +71,11 @@ header{
     }
     
     .Close{
-        position: relative;
+        position: relative !important;
     }
     
     .Open{
-        position: absolute;
+        position: absolute !important;
     }
     
     
@@ -325,12 +325,109 @@ header{
         color: white;
     }
 
+    .pageination{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 15px 0 15px 0;
+    }
+    
+
+    
+    .menulist
+    {
+        top: 4.5% !important;
+         left: 50% !important;
+    }
+     .MuiPaper-root{
+        top: 4.5% !important;
+         left: 50% !important;
+    }
+     .MuiMenu-paper
+     {
+        top: 4.5% !important;
+         left: 50% !important;
+    }
+     .MuiPopover-paper
+     {
+        top: 4.5% !important;
+         left: 50% !important;
+    }
+     .MuiPaper-elevation8
+     {
+        top: 4.5% !important;
+         left: 50% !important;
+    }
+     .MuiPaper-rounded
+   {
+        top: 4.5% !important;
+         left: 50% !important;
+    }
+
+    .MuiMenuItem-root {
+        width: auto;
+        overflow: hidden;
+        font-size: 1rem;
+        box-sizing: border-box; 
+        min-height: 48px;
+        font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+        font-weight: 400;
+        line-height: 1.5;
+        padding-top: 10px !important; 
+        white-space: nowrap;
+        letter-spacing: 0.00938em;
+         padding-bottom: 10px !important; 
+    }
+
     @media screen and (max-width: 600px){
 
-        .MenuBookSharpIcon{
-            color: white;
+        .Container {
+            min-height: 81vh;
+            background: #FFFFFF 0% 0% no-repeat padding-box;
+            opacity: 1;
+            padding: 10px 1% 10px 10%;
+            display: list-item
+        }
+        header {
+            padding: 10px 0 10px 0;
+            display: flex;
+            align-items: center;
+            
+            background: #A03037 0% 0% no-repeat padding-box;
+            opacity: 1;
+            display: flex;
+            justify-content: space-around;
+        }
+        .inputbase {
+            display: flex;
+            top: 14px;
+            height: 33px;
+            background: #FCFCFC 0% 0% no-repeat padding-box;
+            border-radius: 3px;
+            opacity: 1;
+            width:50px;
             margin-left: 0px;
             
+        }
+        footer{
+            padding-top: 10px;
+           display: flex;
+           flex-direction: row;
+           justify-content: flex-start;
+        background: #2E1D1E 0% 0% no-repeat padding-box;
+        opacity: 1;
+
+        }
+        .text{
+            color: white;
+            
+            display: flex;
+            justify-content: center;
+            margin-top: 0;
+            margin-left: 0;
+            margin-bottom: 0;
+            margin-right: 0;
+           
         }
     }
     

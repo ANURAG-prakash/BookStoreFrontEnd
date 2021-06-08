@@ -179,3 +179,62 @@ input{
     display: flex;
     align-items: flex-end;
 }
+
+
+.Place{
+    display: flex;
+    align-items: baseline;
+    padding-left: 500px;
+}
+
+@media screen and (max-width: 600px){
+
+    .PlaceOrder{
+        display: flex;
+        padding: 10px 10px 0 10px;
+    justify-content: flex-start;
+    } 
+    .Cart{
+        width: 300px;
+        padding: 15px;
+        border: 1px solid #cfcfcf;
+        
+    }
+    .cartitems {
+        display: flex;
+        width: 280px;
+        padding: 10px;
+        border: 0.5px solid #cfcfcf;
+    }
+    .openDetails{
+        width: 300px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    }
+    .giveinput {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+    .MuiFormControl-fullWidth {
+        width: 150px;
+    }
+    .giveinputnew {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        padding: 20px 20px 10px 30px;
+    }
+    .Details {
+        width: 300px;
+        height: 20px;
+        padding: 15px;
+        border: 1px solid #cfcfcf;
+    }
+    .Place{
+        display: flex;
+        align-items: baseline;
+        padding-left: 0;
+    }
+}

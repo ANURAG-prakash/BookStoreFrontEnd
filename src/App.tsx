@@ -7,6 +7,7 @@ import Login from '../src/components/login/login';
 import Wishlist from '../src/pages/WishList/WishList';
 import Cart from '../src/pages/Cart/Cart';
 import Last from '../src/pages/LastPage/Lastpage';
+import BookDescription from '../src/components/bookDescription/BookDescription';
 
 function App() {
   return (
@@ -19,6 +20,8 @@ function App() {
       <Route exact path ="/Wishlist" component={Wishlist}/>
       <Route exact path ="/Cart" component={Cart}/>
       <Route exact path ="/Last" component={Last}/>
+      <Route exact path ="/Description" component={BookDescription}/>
+
     </Switch>
   </BrowserRouter>
    
