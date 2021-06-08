@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import Button from '@material-ui/core/Button';
+
 import '../../pages/BookStoreDashboard/BookStoreDashboard.css'
+import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import book1 from '../../assert/book1.png';
@@ -18,6 +19,7 @@ interface BookComponentState {
     redirect: any,
     openDropDown: boolean
     openbutton: boolean
+    currentPage:any
 
 }
 
@@ -40,7 +42,8 @@ export default class BookComponent extends Component<{}, BookComponentState> {
             cartnotes: [],
             redirect: null,
             openDropDown: false,
-            openbutton: false
+            openbutton: false,
+            currentPage:0
         }
 
     }
@@ -113,15 +116,18 @@ export default class BookComponent extends Component<{}, BookComponentState> {
 
         })
     }
-
+    page = (event: any , page: number) => {
+        console.log(" Page: " + page + " nextIndex: " + (page -1) * 12);
+        this.setState({currentPage: (page -1) * 12 });
+    }
 
     render() {
 
 
         return (
-            <Grid item xs={12}>
+            <Grid item xs={10}>
                 <Grid container justify="flex-start">
-                    {this.state.notes.slice(0).reverse().map((value: any, index: any) =>
+                    {this.state.notes.slice(this.state.currentPage , this.state.currentPage+12 ).reverse().map((value: any, index: any) =>
 
                         <Grid key={value.id} item >
 
@@ -180,6 +186,9 @@ export default class BookComponent extends Component<{}, BookComponentState> {
                     )}
                 </Grid>
             </Grid>
+
+
+
 
         )
     }

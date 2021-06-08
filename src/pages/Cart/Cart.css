@@ -21,6 +21,7 @@ flex-direction: column;
 .Title{
     padding-top: 20px;
     padding-bottom: 30px;
+    padding-Left:45px;
 }
 .CartPaper{
     padding-left: 40px;

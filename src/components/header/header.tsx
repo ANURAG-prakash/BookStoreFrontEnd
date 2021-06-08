@@ -22,7 +22,11 @@ interface HeaderState {
     
     redirect: any,
     openDropDown: boolean,
-    notes:any
+    notes:any,
+    books:any,
+    openDropDown2: boolean,
+    search ?: any,
+    searchbook?: any
 }
 
 export default class Header extends Component<{}, HeaderState> {
@@ -32,7 +36,11 @@ export default class Header extends Component<{}, HeaderState> {
             
             redirect: null,
             openDropDown: false,
-            notes:[]
+            notes:[],
+            books:[],
+            openDropDown2: false,
+            search: '',
+            searchbook : ''
         }
 
     }
@@ -65,8 +73,14 @@ export default class Header extends Component<{}, HeaderState> {
     closedropdown = () => {
         this.setState({ openDropDown: false });
     }
+
+    closedropdown2 = () => {
+        this.setState({ openDropDown2: false });
+    }
+
     componentDidMount() {
         this.GetCart();
+        this.GetData();
     }
 
     GetCart = () => {
@@ -78,6 +92,27 @@ export default class Header extends Component<{}, HeaderState> {
         }).catch(() => {
 
         })
+    }
+    GetData = () => {
+        axios_service.Getdata().then((result) => {
+
+            this.setState({ notes: result.data.book.map((obj: object) => (obj = { ...obj, active: false })) });
+
+        }).catch((ex) => {
+            console.log(ex);
+        })
+    }
+
+    search =(e: any) => {
+        console.log(e.target.value);
+        this.setState({ search : e.target.value });
+        this.state.books.forEach((element : any) => {
+            if (e.target.value === element.bookName) {
+                this.setState({ openDropDown2: true });
+                this.setState({ searchbook : element.bookName });
+                console.log(element.bookName)
+            }
+        });
     }
 
     render() {
@@ -98,6 +133,7 @@ export default class Header extends Component<{}, HeaderState> {
 
                         <div className="searchIcon"><SearchIcon /></div>
                         <InputBase
+                            onChange = {e => this.search(e)}
                             placeholder="Search"
                             inputProps={{ 'aria-label': 'search' }}
                         />
