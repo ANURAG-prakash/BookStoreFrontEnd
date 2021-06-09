@@ -25,8 +25,9 @@ interface HeaderState {
     notes:any,
     books:any,
     openDropDown2: boolean,
-    search ?: any,
-    searchbook?: any
+    search : any,
+    searchbook: any,
+    note:any
 }
 
 export default class Header extends Component<{}, HeaderState> {
@@ -40,7 +41,8 @@ export default class Header extends Component<{}, HeaderState> {
             books:[],
             openDropDown2: false,
             search: '',
-            searchbook : ''
+            searchbook : '',
+            note:[]
         }
 
     }
@@ -86,9 +88,9 @@ export default class Header extends Component<{}, HeaderState> {
     GetCart = () => {
         axios_service.Getcart().then((result) => {
             console.log(result.data.book);
-            this.setState({ notes: result.data.book });
-            console.log(this.state.notes);
-            console.log(this.state.notes.bookName[0]);
+            this.setState({ note: result.data.book });
+            console.log(this.state.note);
+            console.log(this.state.note.bookName[0]);
         }).catch(() => {
 
         })
@@ -104,18 +106,22 @@ export default class Header extends Component<{}, HeaderState> {
     }
 
     search =(e: any) => {
-        console.log(e.target.value);
         this.setState({ search : e.target.value });
-        this.state.books.forEach((element : any) => {
+        this.state.notes.forEach((element : any) => {
             if (e.target.value === element.bookName) {
-                this.setState({ openDropDown2: true });
                 this.setState({ searchbook : element.bookName });
                 console.log(element.bookName)
+            }
+
+            if (e.target.value != element.bookName){
+                console.log("Invalid input")
             }
         });
     }
 
     render() {
+       // console.log(this.state.notes)
+       console.log(this.state.books)
 
         if (this.state.redirect) {
 
@@ -137,6 +143,7 @@ export default class Header extends Component<{}, HeaderState> {
                             placeholder="Search"
                             inputProps={{ 'aria-label': 'search' }}
                         />
+
                     </div>
                     </div>
                     <div className="header-part2">
@@ -163,7 +170,7 @@ export default class Header extends Component<{}, HeaderState> {
                             </div>
                     </div>
                     <div className="ShoppingCartIcon">
-                    <Badge badgeContent={this.state.notes.length} >
+                    <Badge badgeContent={this.state.note.length} >
                         <ShoppingCartIcon onClick={this.toCart} /> 
                         </Badge>
                         <div className="Style">Cart</div>

@@ -134,6 +134,47 @@ header{
     background: transparent 0% 0% no-repeat padding-box;
     opacity: 1;
     }
+
+    .imgout{
+        background: #F5F5F5 0% 0% no-repeat padding-box ;
+        top: 145px;
+    left: 171px;
+    width: 235px;
+    height: 153px;
+
+    }
+
+    #imageout{
+        margin-left: 60px;
+    margin-top: 10px;
+    width: 95px;
+    height: 115px;
+    background: transparent 0% 0% no-repeat padding-box;
+    opacity: 1;
+
+    }
+
+    .outofstock{
+ display: flex;
+ align-items: center;
+ justify-content: center;
+    font-family: initial;
+    font-style: bold;
+    font-style: initial;
+    border-color: black;
+    border-radius: 2px;
+    border-style: solid;
+    background-color: white;
+    width:70%
+
+    }
+
+
+    .container-out{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
     
     .paper{
     
@@ -379,6 +420,9 @@ header{
         letter-spacing: 0.00938em;
          padding-bottom: 10px !important; 
     }
+
+   
+    
 
     @media screen and (max-width: 600px){
 

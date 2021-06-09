@@ -22,7 +22,7 @@ const axios_service = new Userservice();
 
 
 interface CartState {
-    notes: any,
+    note: any,
     redirect: any,
     openDropDown: boolean,
     openDetails: boolean,
@@ -53,7 +53,7 @@ export default class Cart extends Component<{}, CartState> {
     constructor(props: any) {
         super(props);
         this.state = {
-            notes: [],
+            note: [],
             redirect: null,
             openDropDown: false,
             openDetails: false,
@@ -86,17 +86,17 @@ export default class Cart extends Component<{}, CartState> {
         console.log(e);
         e += 1
         console.log(e);
-        let findIndex = this.state.notes.findIndex((element: any) => element.id == value);
+        let findIndex = this.state.note.findIndex((element: any) => element.id == value);
 
         console.log(findIndex);
 
-        let newArray = [...this.state.notes]
+        let newArray = [...this.state.note]
 
         newArray[findIndex] = { ...newArray[findIndex], quantity: e }
 
         console.log(newArray[findIndex]);
 
-        this.setState({ notes: newArray });
+        this.setState({ note: newArray });
 
     }
 
@@ -156,16 +156,16 @@ export default class Cart extends Component<{}, CartState> {
     GetCart = () => {
         axios_service.Getcart().then((result) => {
             console.log(result.data.book);
-            this.setState({ notes: result.data.book });
-            console.log(this.state.notes);
-            console.log(this.state.notes.bookName[0]);
+            this.setState({ note: result.data.book });
+            console.log(this.state.note);
+            console.log(this.state.note.bookName[0]);
         }).catch(() => {
 
         })
     }
 
     orderItems = () => {
-        this.state.notes.forEach((element : any )=> {
+        this.state.note.forEach((element : any )=> {
             axios_service.Order(element.bookId, element.quantity).then((result) => {
                 console.log(result.data);
             }).catch(() => {
@@ -239,9 +239,9 @@ export default class Cart extends Component<{}, CartState> {
                 
 
                     <div className="Cart">
-                    <div className="MyCart">My Cart({this.state.notes.length}) </div>
+                    <div className="MyCart">My Cart({this.state.note.length}) </div>
 
-                        {this.state.notes.slice(0).reverse().map((value: any , index: any) =>
+                        {this.state.note.slice(0).reverse().map((value: any , index: any) =>
 
                             <div key={value.id} className="cartitems">
 
@@ -441,7 +441,7 @@ export default class Cart extends Component<{}, CartState> {
                         <div className="Cart">
                             <div className="heading">My Cart</div>
 
-                            {this.state.notes.slice(0).reverse().map((value: any) =>
+                            {this.state.note.slice(0).reverse().map((value: any) =>
 
                                 <div key={value.id} className="cartItemsSummery">
 

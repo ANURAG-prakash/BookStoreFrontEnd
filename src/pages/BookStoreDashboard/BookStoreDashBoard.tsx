@@ -26,8 +26,8 @@ interface BookState {
     redirect: any,
     openDropDown: boolean,
     currentPage: any,
-    openbutton? : boolean
-    cartnotes:any
+    openbutton?: boolean
+    cartnotes: any
 
 }
 
@@ -45,7 +45,7 @@ export default class BookComponent extends Component<{}, BookState> {
             currentPage: 0,
             cartnotes: [],
             openbutton: false,
-          
+
 
         }
 
@@ -65,9 +65,9 @@ export default class BookComponent extends Component<{}, BookState> {
         })
     }
 
-    page = (event: any , page: number) => {
-        console.log(" Page: " + page + " nextIndex: " + (page -1) * 12);
-        this.setState({currentPage: (page -1) * 12 });
+    page = (event: any, page: number) => {
+        console.log(" Page: " + page + " nextIndex: " + (page - 1) * 12);
+        this.setState({ currentPage: (page - 1) * 12 });
     }
     CheckTF = (id: any): boolean => {
         let check: boolean = false;
@@ -89,7 +89,7 @@ export default class BookComponent extends Component<{}, BookState> {
 
         })
     }
-    
+
     addtoCart = (value: any, index: any) => {
 
         let findIndex = this.state.notes.findIndex((element: any) => element.id == value);
@@ -125,7 +125,7 @@ export default class BookComponent extends Component<{}, BookState> {
         })
     }
 
-   
+
 
     render() {
 
@@ -137,76 +137,109 @@ export default class BookComponent extends Component<{}, BookState> {
         return (
 
             <div>
-                <Header/>
+                <Header />
                 <div className="Container">
                     <div className="Title">Books({this.state.notes.length}) </div>
                     <Grid item xs={10}>
-                <Grid container justify="flex-start">
-                    {this.state.notes.slice(this.state.currentPage , this.state.currentPage+12 ).reverse().map((value: any, index: any) =>
+                        <Grid container justify="flex-start">
+                            {this.state.notes.slice(this.state.currentPage, this.state.currentPage + 12).reverse().map((value: any, index: any) =>
 
-                        <Grid key={value.id} item >
+                                <Grid key={value.id} item >
 
-                            <Paper className="paper">
+                                    <Paper className="paper">
 
-                                <div>
-                                    <div className="img">
-                                        <img id="image2" src={book1} alt="Book" />
-                                    </div>
 
-                                    <div className="Intro">
 
-                                        <div className="bookName">{value.bookName} </div>
-                                        <div className="by">by {value.authors}</div>
-                                        <div className="rating">4.5 <div className="number">({value.availableBooks})</div></div>
-                                        <div className="price">Rs.{value.price}</div>
-                                        {/* {value.active ? */}
-                                        {this.CheckTF(value.id)
-                                            ?
+                                        <div>
 
-                                            <div className="bookbuttons2">
 
-                                                <Button className="buttonsize1" size="small" variant="contained" color="primary">
-                                                    Added to Bag
-                                                </Button>
+                                            {value.availableBooks !== 0
+
+                                                ?
+
+                                                <div className="img">
+                                                    <img id="image2" src={book1} alt="Book" />
+                                                </div>
+                                                :
+
+                                                <div className="imgout">
+                                                    <img id="imageout" src={book1} alt="Book" />
+                                                    <div className="container-out">
+                                                    <div className="outofstock">OUT OF STOCK</div>
+                                                    </div>
+                                                </div>
+
+                                            }
+
+                                            <div className="Intro">
+
+                                                <div className="bookName">{value.bookName} </div>
+                                                <div className="by">by {value.authors}</div>
+                                                <div className="rating">4.5 <div className="number">({value.availableBooks})</div></div>
+                                                <div className="price">Rs.{value.price}</div>
+                                                {/* {value.active ? */}
+
+                                                {value.availableBooks !== 0
+
+                                                    ?
+                                                    <div>
+                                                        {this.CheckTF(value.id)
+                                                            ?
+
+                                                            <div className="bookbuttons2">
+
+                                                                <Button className="buttonsize1" size="small" variant="contained" color="primary">
+                                                                    Added to Bag
+                                                                </Button>
+
+                                                            </div>
+
+                                                            :
+
+                                                            <div className="bookbuttons">
+
+                                                                <div >
+                                                                    <Button className="buttonsize" onClick={() => this.addtoCart(value.id, index)} size="small" variant="contained" color="secondary">
+                                                                        Add to Bag
+                                                                    </Button>
+                                                                </div>
+                                                                <div >
+                                                                    <Button className="buttonsize" onClick={() => this.addtoWishList(value.id)} size="small" variant="contained">
+                                                                        WishList
+                                                                    </Button>
+                                                                </div>
+
+                                                            </div>
+                                                        }
+                                                    </div>
+                                                    :
+
+                                                    <div>
+                                                        <Button className="buttonsize1" onClick={() => this.addtoWishList(value.id)} size="small" variant="contained">
+                                                            WishList
+                                                        </Button>
+                                                    </div>
+
+                                                }
+
 
                                             </div>
 
-                                            :
+                                        </div>
 
-                                            <div className="bookbuttons">
+                                    </Paper>
 
-                                                <div >
-                                                    <Button className="buttonsize" onClick={() => this.addtoCart(value.id, index)} size="small" variant="contained" color="secondary">
-                                                        Add to Bag
-                                                    </Button>
-                                                </div>
-                                                <div >
-                                                    <Button className="buttonsize" onClick={() => this.addtoWishList(value.id)} size="small" variant="contained">
-                                                        WishList
-                                                    </Button>
-                                                </div>
+                                </Grid>
 
-                                            </div>
-                                        }
-                                       
-
-                                    </div>
-
-                                </div>
-
-                            </Paper>
-
+                            )}
                         </Grid>
-
-                    )}
-                </Grid>
-            </Grid>
+                    </Grid>
                 </div>
-                <Pagination className = "pageination" onChange = {this.page} count={Math.ceil(this.state.notes.length / 12)} variant="outlined" shape="rounded" />
+                <Pagination className="pageination" onChange={this.page} count={Math.ceil(this.state.notes.length / 12)} variant="outlined" shape="rounded" />
 
 
-                <Footer/>
+                <Footer />
             </div>
         )
     }
-}    
+}
