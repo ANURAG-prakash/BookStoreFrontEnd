@@ -4,6 +4,7 @@ import './BookDescription.css'
 export class BookDescription extends Component {
   render() {
     return (
+      <div className="Large-container">
       <div className="main-conatiner">
         <div className="BookdisHeader" >
           <h1>
@@ -17,6 +18,7 @@ export class BookDescription extends Component {
           the codex replaces its predecessor, the scroll. A single sheet in a codex is a leaf and each side of a leaf is a page.
         </div>
         
+      </div>
       </div>
     )
   }

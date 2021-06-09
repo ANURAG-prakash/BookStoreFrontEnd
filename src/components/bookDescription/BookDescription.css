@@ -13,3 +13,9 @@
     padding:15px;
     
 }
+
+.Large-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
