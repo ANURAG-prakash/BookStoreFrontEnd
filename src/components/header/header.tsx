@@ -19,45 +19,45 @@ import Button from '@material-ui/core/Button';
 const axios_service = new Userservice();
 
 interface HeaderState {
-    
+
     redirect: any,
     openDropDown: boolean,
-    notes:any,
-    books:any,
+    notes: any,
+    books: any,
     openDropDown2: boolean,
-    search : any,
+    search: any,
     searchbook: any,
-    note:any
+    note: any
 }
 
 export default class Header extends Component<{}, HeaderState> {
     constructor(props: any) {
         super(props);
         this.state = {
-            
+
             redirect: null,
             openDropDown: false,
-            notes:[],
-            books:[],
+            notes: [],
+            books: [],
             openDropDown2: false,
             search: '',
-            searchbook : '',
-            note:[]
+            searchbook: '',
+            note: []
         }
 
     }
 
     toWishList = () => {
         console.log(window.location.href)
-        if(window.location.href !== "http://localhost:3000/Wishlist"){
-        this.setState({ redirect: "/Wishlist" });
-    }
+        if (window.location.href !== "http://localhost:3000/Wishlist") {
+            this.setState({ redirect: "/Wishlist" });
+        }
     }
 
     toCart = () => {
         console.log(window.location.href)
-        if(window.location.href !== "http://localhost:3000/Cart"){
-        this.setState({ redirect: "/Cart" });
+        if (window.location.href !== "http://localhost:3000/Cart") {
+            this.setState({ redirect: "/Cart" });
         }
     }
     toDashboard = () => {
@@ -105,23 +105,23 @@ export default class Header extends Component<{}, HeaderState> {
         })
     }
 
-    search =(e: any) => {
-        this.setState({ search : e.target.value });
-        this.state.notes.forEach((element : any) => {
+    search = (e: any) => {
+        this.setState({ search: e.target.value });
+        this.state.notes.forEach((element: any) => {
             if (e.target.value === element.bookName) {
-                this.setState({ searchbook : element.bookName });
+                this.setState({ searchbook: element.bookName });
                 console.log(element.bookName)
             }
 
-            if (e.target.value != element.bookName){
-                console.log("Invalid input")
-            }
+            // if (e.target.value != element.bookName){
+            //     console.log("Invalid input")
+            // }
         });
     }
 
     render() {
-       // console.log(this.state.notes)
-       console.log(this.state.books)
+        // console.log(this.state.notes)
+        console.log(this.state.books)
 
         if (this.state.redirect) {
 
@@ -131,54 +131,80 @@ export default class Header extends Component<{}, HeaderState> {
         return (
             <div>
                 <header>
-                 <div className="header-part1">
-                    <MenuBookSharpIcon className="MenuBookSharpIcon" />
-                    <div className="Name"  onClick={this.toDashboard}>Bookstore</div>
+                    <div className="header-part1">
+                        <MenuBookSharpIcon className="MenuBookSharpIcon" />
+                        <div className="Name" onClick={this.toDashboard}>Bookstore</div>
 
-                    <div className="inputbase">
+                        <div className="inputbase">
 
-                        <div className="searchIcon"><SearchIcon /></div>
-                        <InputBase
-                            onChange = {e => this.search(e)}
-                            placeholder="Search"
-                            inputProps={{ 'aria-label': 'search' }}
-                        />
+                            <div className="searchIcon"><SearchIcon /></div>
 
-                    </div>
+                            <div>
+
+                                {this.state.openDropDown2
+
+                                    ?
+                                    <div>
+                                        <InputBase
+                                            className="searchBook"
+                                            onChange={e => this.search(e)}
+                                            placeholder="Search"
+                                            inputProps={{ 'aria-label': 'search' }}
+                                        />
+                                        <div className="menulist3">
+
+                                            {this.state.searchbook}
+                                        </div>
+                                    </div>
+
+                                    :
+
+                                    <InputBase
+                                        className="search2"
+                                        onChange={e => this.search(e)}
+                                        placeholder="Search"
+                                        inputProps={{ 'aria-label': 'search' }}
+                                    />
+
+                                }
+
+
+                            </div>
+                        </div>
                     </div>
                     <div className="header-part2">
 
-                    <div className="PersonOutlineOutlinedIcon">
+                        <div className="PersonOutlineOutlinedIcon">
                             <div className="dropdown">
-                            <div className= "close">
-                                <PersonOutlineOutlinedIcon onClick={this.opendropdown} />
-                                <div className="Style"> Person </div>
+                                <div className="close">
+                                    <PersonOutlineOutlinedIcon onClick={this.opendropdown} />
+                                    <div className="Style"> Person </div>
                                 </div>
                                 <div className="Open">
-                                <Menu
-                                    className="menulist"
-                                    keepMounted
-                                    open={this.state.openDropDown}
-                                    onClose={this.closedropdown}
+                                    <Menu
+                                        className="menulist"
+                                        keepMounted
+                                        open={this.state.openDropDown}
+                                        onClose={this.closedropdown}
 
                                     >
-                                    <MenuItem onClick={this.closedropdown}>Welcome Anurag</MenuItem>
-                                    <MenuItem onClick={this.toLogout} >< Button className="buttonsize"  size="small"  variant="contained">Logout</Button></MenuItem>
+                                        <MenuItem onClick={this.closedropdown}>Welcome User !!</MenuItem>
+                                        <MenuItem onClick={this.toLogout} >< Button className="buttonsize" size="small" variant="contained">Logout</Button></MenuItem>
 
-                                </Menu>
+                                    </Menu>
                                 </div>
                             </div>
-                    </div>
-                    <div className="ShoppingCartIcon">
-                    <Badge badgeContent={this.state.note.length} >
-                        <ShoppingCartIcon onClick={this.toCart} /> 
-                        </Badge>
-                        <div className="Style">Cart</div>
                         </div>
-                    <div className="WishlistIcon"><FavoriteIcon onClick={this.toWishList} /> <div className="Style">WishList</div></div>
+                        <div className="ShoppingCartIcon">
+                            <Badge badgeContent={this.state.note.length} >
+                                <ShoppingCartIcon onClick={this.toCart} />
+                            </Badge>
+                            <div className="Style">Cart</div>
+                        </div>
+                        <div className="WishlistIcon"><FavoriteIcon onClick={this.toWishList} /> <div className="Style">WishList</div></div>
                     </div>
                 </header>
             </div>
-        )  
+        )
     }
 }

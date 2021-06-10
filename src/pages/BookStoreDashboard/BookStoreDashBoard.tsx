@@ -125,6 +125,26 @@ export default class BookComponent extends Component<{}, BookState> {
         })
     }
 
+    descriptionshow = (id: any, index : any) => {
+        let findIndex = this.state.notes.findIndex((element : any) => element.id == id);
+
+         let newArray = [...this.state.notes]
+
+         newArray[findIndex].isdescription = true;
+
+         this.setState({notes: newArray});
+    }
+
+    descriptionclose = (id: any, index : any) => {
+        let findIndex = this.state.notes.findIndex((element : any) => element.id == id);
+
+         let newArray = [...this.state.notes]
+
+         newArray[findIndex].isdescription = false;
+
+         this.setState({notes: newArray});
+    }
+
 
 
     render() {
@@ -158,7 +178,18 @@ export default class BookComponent extends Component<{}, BookState> {
                                                 ?
 
                                                 <div className="img">
-                                                    <img id="image2" src={book1} alt="Book" />
+                                                    {value.isdescription
+                                                    ?
+                                                    <div className = "MainDescription">
+                                                    <img id = "image2" src={book1} alt="Book" onMouseLeave={() => this.descriptionclose(value.id, index)}/>
+                                                    <div className = "Description">
+                                                        <div><h2>Book Details</h2></div>
+                                                        <div>{value.description}</div>
+                                                    </div>
+                                                    </div>
+                                                    :
+                                                    <img id = "image2" src={book1} alt="Book" onMouseEnter = {() => this.descriptionshow(value.id, index)}/>
+                                                }
                                                 </div>
                                                 :
 
